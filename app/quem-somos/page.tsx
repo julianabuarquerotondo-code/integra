@@ -20,8 +20,17 @@ export default function QuemSomosPage() {
 
       <Section background="cream">
         <div className="grid gap-8 lg:grid-cols-3 lg:items-center">
-          <div className="relative mx-auto aspect-square w-full max-w-xs overflow-hidden rounded-3xl lg:col-span-1">
-            <Image src="/illustrations/portrait-placeholder.svg" alt="" fill className="object-cover" />
+          <div className="relative mx-auto w-full max-w-xs lg:col-span-1">
+            <div className="absolute -top-4 -left-4 -z-10 h-24 w-24 rounded-3xl bg-soft-green" />
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl shadow-xl shadow-purple-dark/10 ring-1 ring-border">
+              <Image
+                src="/photos/portrait.png"
+                alt={`Retrato de ${siteConfig.professionalName}`}
+                fill
+                sizes="(min-width: 1024px) 20rem, 80vw"
+                className="object-cover"
+              />
+            </div>
           </div>
           <div className="lg:col-span-2">
             <h2 className="text-2xl font-semibold text-purple-dark">{siteConfig.professionalName}</h2>
@@ -58,15 +67,28 @@ export default function QuemSomosPage() {
       </Section>
 
       <Section background="white">
-        <SectionHeading title="Espaço" align="center" description="Fotos reais em breve." />
+        <SectionHeading title="Espaço" align="center" />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {["Ambiente", "Sala de atendimento", "Área de Neurofeedback"].map((label) => (
-            <div
-              key={label}
-              className="flex aspect-4/3 items-center justify-center rounded-3xl bg-soft-lilac text-sm font-medium text-text-secondary"
+          {[
+            { label: "Recepção", src: "/photos/space-reception.png" },
+            { label: "Sala de atendimento", src: "/photos/space-room.png" },
+            { label: "Área de Neurofeedback", src: "/photos/space-neuro.png" },
+          ].map((item) => (
+            <figure
+              key={item.label}
+              className="group relative aspect-[4/3] overflow-hidden rounded-3xl ring-1 ring-border"
             >
-              {label}
-            </div>
+              <Image
+                src={item.src}
+                alt={item.label}
+                fill
+                sizes="(min-width: 1024px) 22rem, (min-width: 640px) 45vw, 90vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-purple-dark/70 to-transparent p-4">
+                <figcaption className="text-sm font-medium text-white">{item.label}</figcaption>
+              </div>
+            </figure>
           ))}
         </div>
       </Section>

@@ -9,18 +9,21 @@ export function HowItWorks() {
   return (
     <Section background="white">
       <SectionHeading title="Como funciona" align="center" />
-      <div className="relative grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="pointer-events-none absolute top-6 right-0 left-0 hidden h-px bg-border lg:block" />
+      <div className="relative grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="pointer-events-none absolute top-7 right-8 left-8 hidden h-px bg-gradient-to-r from-transparent via-border to-transparent lg:block" />
         {howItWorksSteps.map((step, index) => {
           const Icon = icons[index];
           return (
             <Reveal key={step.title} delay={index * 100}>
               <div className="relative text-center">
-                <span className="relative z-10 mx-auto flex size-12 items-center justify-center rounded-2xl bg-purple-primary text-white shadow-sm shadow-purple-primary/30">
-                  <Icon className="size-5" aria-hidden strokeWidth={1.75} />
+                <span className="relative z-10 mx-auto flex size-14 items-center justify-center rounded-2xl bg-purple-primary text-white shadow-md shadow-purple-primary/30 ring-4 ring-white">
+                  <Icon className="size-6" aria-hidden strokeWidth={1.75} />
+                  <span className="absolute -top-1.5 -right-1.5 flex size-6 items-center justify-center rounded-full border border-border bg-white text-xs font-semibold text-purple-dark">
+                    {index + 1}
+                  </span>
                 </span>
-                <h3 className="mt-4 text-sm font-semibold text-purple-dark">{step.title}</h3>
-                <p className="mt-1 text-sm text-text-secondary">{step.description}</p>
+                <h3 className="mt-5 text-base font-semibold text-purple-dark">{step.title}</h3>
+                <p className="mt-2 text-sm text-pretty text-text-secondary">{step.description}</p>
               </div>
             </Reveal>
           );
