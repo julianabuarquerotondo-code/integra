@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MapPin, Clock, Mail, Phone, AtSign } from "lucide-react";
+import { MapPin, Clock, Mail, Phone, AtSign, MessageCircle, ClipboardCheck } from "lucide-react";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
 import { QuizCta } from "@/components/ui/QuizCta";
@@ -20,9 +20,12 @@ export default function ContatoPage() {
         <SectionHeading eyebrow="Contato" title="Vamos conversar?" align="center" />
 
         <div className="grid gap-4 sm:grid-cols-2">
-          <div className="rounded-3xl bg-white p-6 shadow-sm">
-            <h3 className="text-lg font-semibold text-purple-dark">Já sabe qual atendimento procura?</h3>
-            <p className="mt-2 text-sm text-text-secondary">
+          <div className="flex flex-col rounded-3xl border border-border bg-white p-6 shadow-sm">
+            <span className="flex size-12 items-center justify-center rounded-2xl bg-soft-green">
+              <MessageCircle className="size-6 text-green" aria-hidden strokeWidth={1.75} />
+            </span>
+            <h3 className="mt-4 text-lg font-semibold text-purple-dark">Já sabe qual atendimento procura?</h3>
+            <p className="mt-2 flex-1 text-sm text-text-secondary">
               Fale diretamente com o Instituto para agendar uma avaliação.
             </p>
             <ButtonLink
@@ -32,9 +35,12 @@ export default function ContatoPage() {
               Agende uma avaliação
             </ButtonLink>
           </div>
-          <div className="rounded-3xl bg-white p-6 shadow-sm">
-            <h3 className="text-lg font-semibold text-purple-dark">Ainda tem dúvidas?</h3>
-            <p className="mt-2 text-sm text-text-secondary">
+          <div className="flex flex-col rounded-3xl border border-border bg-white p-6 shadow-sm">
+            <span className="flex size-12 items-center justify-center rounded-2xl bg-soft-lilac">
+              <ClipboardCheck className="size-6 text-purple-primary" aria-hidden strokeWidth={1.75} />
+            </span>
+            <h3 className="mt-4 text-lg font-semibold text-purple-dark">Ainda tem dúvidas?</h3>
+            <p className="mt-2 flex-1 text-sm text-text-secondary">
               Responda à triagem rápida e organize as informações para o primeiro contato.
             </p>
             <QuizCta className="mt-4 w-full justify-center" />
@@ -47,21 +53,35 @@ export default function ContatoPage() {
           <div>
             <h2 className="text-xl font-semibold text-purple-dark">Informações de contato</h2>
             <ul className="mt-4 space-y-3 text-sm text-text-secondary">
-              <li className="flex items-center gap-2">
-                <Phone className="size-4 shrink-0" aria-hidden /> {siteConfig.whatsappDisplay}
+              <li className="flex items-center gap-3">
+                <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-xl bg-soft-lilac">
+                  <Phone className="size-4 text-purple-primary" aria-hidden />
+                </span>
+                {siteConfig.whatsappDisplay}
               </li>
-              <li className="flex items-center gap-2">
-                <Mail className="size-4 shrink-0" aria-hidden /> {siteConfig.email}
+              <li className="flex items-center gap-3">
+                <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-xl bg-soft-lilac">
+                  <Mail className="size-4 text-purple-primary" aria-hidden />
+                </span>
+                {siteConfig.email}
               </li>
-              <li className="flex items-center gap-2">
-                <MapPin className="size-4 shrink-0" aria-hidden /> {siteConfig.address}, {siteConfig.city}
+              <li className="flex items-center gap-3">
+                <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-xl bg-soft-lilac">
+                  <MapPin className="size-4 text-purple-primary" aria-hidden />
+                </span>
+                {siteConfig.address}, {siteConfig.city}
               </li>
-              <li className="flex items-center gap-2">
-                <Clock className="size-4 shrink-0" aria-hidden /> {siteConfig.openingHours}
+              <li className="flex items-center gap-3">
+                <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-xl bg-soft-lilac">
+                  <Clock className="size-4 text-purple-primary" aria-hidden />
+                </span>
+                {siteConfig.openingHours}
               </li>
               {siteConfig.instagramUrl ? (
-                <li className="flex items-center gap-2">
-                  <AtSign className="size-4 shrink-0" aria-hidden />
+                <li className="flex items-center gap-3">
+                  <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-xl bg-soft-lilac">
+                    <AtSign className="size-4 text-purple-primary" aria-hidden />
+                  </span>
                   <a href={siteConfig.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
                     Instagram
                   </a>

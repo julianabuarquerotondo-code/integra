@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { QuizCta } from "@/components/ui/QuizCta";
 import { services, complementaryServices, carePathway } from "@/content/services";
@@ -13,14 +14,34 @@ export default function ServicosPage() {
   return (
     <>
       <Section background="white">
-        <SectionHeading
-          eyebrow="Serviços"
-          title="Um plano para cada fase da vida"
-          description="Sem protocolo genérico. Se tiver dúvidas, a triagem rápida ajuda a organizar o primeiro contato."
-          align="center"
-        />
-        <div className="flex justify-center">
-          <QuizCta size="lg" />
+        <div className="grid items-center gap-10 lg:grid-cols-2">
+          <div>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-green">Serviços</p>
+            <h1 className="text-3xl font-semibold text-balance text-purple-dark sm:text-4xl">
+              Um plano para cada fase da vida
+            </h1>
+            <span className="mt-4 block h-1 w-12 rounded-full bg-purple-primary/70" aria-hidden />
+            <p className="mt-5 max-w-md text-pretty text-text-secondary sm:leading-relaxed">
+              Sem protocolo genérico. Se tiver dúvidas, a triagem rápida ajuda a organizar o
+              primeiro contato.
+            </p>
+            <div className="mt-8">
+              <QuizCta size="lg" />
+            </div>
+          </div>
+          <div className="relative mx-auto w-full max-w-md lg:max-w-lg">
+            <div className="absolute -top-4 -right-4 -bottom-4 -left-4 -z-10 rounded-[2rem] bg-soft-lilac" />
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] shadow-xl shadow-purple-dark/10 ring-1 ring-border">
+              <Image
+                src="/photos/services-hero.png"
+                alt="Sessão de neurofeedback no Instituto Integra+"
+                fill
+                priority
+                sizes="(min-width: 1024px) 32rem, 90vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
         </div>
       </Section>
 
@@ -62,8 +83,8 @@ export default function ServicosPage() {
               ) : null}
             </div>
 
-            <div className="flex flex-col items-start gap-3 rounded-3xl border border-border bg-white p-6">
-              <p className="text-sm text-text-secondary">
+            <div className="flex h-fit flex-col items-start gap-3 rounded-3xl border border-border bg-soft-lilac/50 p-6 lg:sticky lg:top-24">
+              <p className="text-sm font-medium text-purple-dark">
                 Ainda não sabe se este é o serviço certo?
               </p>
               <QuizCta label={service.quizCta} interest={service.quizInterest} className="w-full justify-center" />
@@ -76,7 +97,10 @@ export default function ServicosPage() {
         <SectionHeading title="Serviços complementares" align="center" />
         <ul className="grid gap-3 sm:grid-cols-2">
           {complementaryServices.map((item) => (
-            <li key={item} className="rounded-2xl bg-white p-4 text-sm text-text-secondary">
+            <li
+              key={item}
+              className="rounded-2xl border border-border bg-white p-4 text-sm text-text-secondary transition-colors hover:border-purple-primary/30"
+            >
               {item}
             </li>
           ))}

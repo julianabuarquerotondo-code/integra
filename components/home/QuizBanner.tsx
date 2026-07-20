@@ -22,12 +22,13 @@ export function QuizBanner() {
             </div>
             <p className="mt-3 text-xs text-text-secondary">{ctaCopy.quizDisclaimer}</p>
           </div>
-          <div className="relative mx-auto hidden size-36 shrink-0 sm:block animate-float">
+          <div className="relative mx-auto hidden aspect-square w-48 shrink-0 overflow-hidden rounded-3xl shadow-lg shadow-purple-dark/10 ring-1 ring-border sm:block lg:w-56">
             <Image
-              src="/illustrations/quiz.svg"
-              alt="Ilustração de uma conversa de triagem"
+              src="/photos/quiz.png"
+              alt="Pessoa respondendo a triagem inicial pelo celular"
               fill
-              className="object-contain"
+              sizes="14rem"
+              className="object-cover"
             />
           </div>
         </div>
