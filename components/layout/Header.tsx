@@ -30,15 +30,15 @@ export function Header() {
         scrolled ? "border-border shadow-sm" : "border-transparent",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-5 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
           <Image
             src="/brand/logo-instituto-integra.png"
             alt="Instituto Integra+"
-            width={180}
-            height={48}
+            width={330}
+            height={125}
             priority
-            className="h-9 w-auto sm:h-10"
+            className="h-12 w-auto sm:h-14"
           />
         </Link>
 

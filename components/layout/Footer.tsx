@@ -12,9 +12,9 @@ export function Footer() {
             <Image
               src="/brand/logo-instituto-integra.png"
               alt="Instituto Integra+"
-              width={160}
-              height={44}
-              className="h-9 w-auto"
+              width={220}
+              height={83}
+              className="h-11 w-auto"
             />
             <p className="mt-4 text-sm text-text-secondary">{siteConfig.tagline}</p>
           </div>
@@ -43,9 +43,13 @@ export function Footer() {
                 <Mail className="size-4 shrink-0" aria-hidden />
                 {siteConfig.email}
               </li>
-              <li className="flex items-center gap-2">
-                <MapPin className="size-4 shrink-0" aria-hidden />
-                {siteConfig.city}
+              <li className="flex items-start gap-2">
+                <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden />
+                <span>
+                  {siteConfig.address}
+                  <br />
+                  {siteConfig.city}
+                </span>
               </li>
             </ul>
           </div>

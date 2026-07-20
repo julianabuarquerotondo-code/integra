@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { QuizCta } from "@/components/ui/QuizCta";
+import { cn } from "@/lib/utils/cn";
 import { services, complementaryServices, carePathway } from "@/content/services";
 
 export const metadata: Metadata = {
@@ -45,53 +46,47 @@ export default function ServicosPage() {
         </div>
       </Section>
 
-      {services.map((service, index) => (
-        <Section key={service.key} background={index % 2 === 0 ? "cream" : "white"}>
-          <div className="grid gap-8 lg:grid-cols-3">
-            <div className="lg:col-span-2">
-              <p className="text-xs font-semibold uppercase tracking-wide text-green">
-                {service.audience}
-              </p>
-              <h2 className="mt-1 text-2xl font-semibold text-purple-dark">{service.name}</h2>
-              <p className="mt-4 text-text-secondary">{service.intro}</p>
+      {services.map((service, index) => {
+        const reversed = index % 2 === 1;
+        return (
+          <Section key={service.key} background={index % 2 === 0 ? "cream" : "white"}>
+            <div className="grid items-center gap-10 lg:grid-cols-2">
+              <div className={cn("relative mx-auto w-full max-w-md", reversed && "lg:order-2")}>
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] shadow-lg shadow-purple-dark/10 ring-1 ring-border">
+                  <Image
+                    src={service.image}
+                    alt={service.name}
+                    fill
+                    sizes="(min-width: 1024px) 28rem, 90vw"
+                    className="object-cover"
+                  />
+                </div>
+              </div>
 
-              <h3 className="mt-6 text-sm font-semibold text-purple-dark">
-                Áreas que podem ser observadas
-              </h3>
-              <ul className="mt-3 flex flex-wrap gap-2">
-                {service.covers.map((item) => (
-                  <li
-                    key={item}
-                    className="rounded-full bg-soft-lilac px-3 py-1 text-xs font-medium text-purple-dark"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <div className={cn(reversed && "lg:order-1")}>
+                <p className="text-xs font-semibold uppercase tracking-wide text-green">
+                  {service.audience}
+                </p>
+                <h2 className="mt-1 text-2xl font-semibold text-purple-dark">{service.name}</h2>
+                <p className="mt-4 text-text-secondary">{service.intro}</p>
 
-              {service.process ? (
-                <>
-                  <h3 className="mt-6 text-sm font-semibold text-purple-dark">Como funciona</h3>
-                  <ol className="mt-3 space-y-1 text-sm text-text-secondary">
-                    {service.process.map((step, i) => (
-                      <li key={step}>
-                        {i + 1}. {step}
-                      </li>
-                    ))}
-                  </ol>
-                </>
-              ) : null}
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {service.covers.slice(0, 5).map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full bg-white px-3 py-1 text-xs font-medium text-purple-dark ring-1 ring-border"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+
+                <QuizCta label={service.quizCta} interest={service.quizInterest} className="mt-6" />
+              </div>
             </div>
-
-            <div className="flex h-fit flex-col items-start gap-3 rounded-3xl border border-border bg-soft-lilac/50 p-6 lg:sticky lg:top-24">
-              <p className="text-sm font-medium text-purple-dark">
-                Ainda não sabe se este é o serviço certo?
-              </p>
-              <QuizCta label={service.quizCta} interest={service.quizInterest} className="w-full justify-center" />
-            </div>
-          </div>
-        </Section>
-      ))}
+          </Section>
+        );
+      })}
 
       <Section background="cream">
         <SectionHeading title="Serviços complementares" align="center" />

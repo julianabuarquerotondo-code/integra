@@ -12,6 +12,7 @@ export interface ServiceContent {
   quizCta: string;
   quizInterest: string;
   intro: string;
+  image: string;
   covers: string[];
   process?: string[];
 }
@@ -24,6 +25,7 @@ export const services: ServiceContent[] = [
     shortDescription: "Entenda as causas das dificuldades de aprendizagem e atenção.",
     quizCta: "Ver se a avaliação pode ser o primeiro passo",
     quizInterest: "avaliacao",
+    image: "/photos/children.png",
     intro:
       "Antes de definir uma intervenção, é importante considerar o histórico, os ambientes em que as dificuldades aparecem e o impacto delas na rotina. A Avaliação Integrada da Neuroaprendizagem ajuda a organizar essas informações e contribui para a definição dos próximos passos.",
     covers: [
@@ -55,6 +57,7 @@ export const services: ServiceContent[] = [
     shortDescription: "Desenvolva leitura, escrita, atenção e organização.",
     quizCta: "Contar quais habilidades precisam de atenção",
     quizInterest: "intervencao",
+    image: "/photos/space-room.png",
     intro:
       "A Intervenção em Neuroaprendizagem é planejada de acordo com as necessidades, as potencialidades e os objetivos de cada criança ou adolescente. Antes do início, a profissional verifica se já existem informações suficientes ou se uma avaliação mais ampla será necessária.",
     covers: [
@@ -78,6 +81,7 @@ export const services: ServiceContent[] = [
     shortDescription: "Treinamento cerebral não invasivo para foco e autorregulação.",
     quizCta: "Entender se o Neurofeedback pode fazer sentido",
     quizInterest: "neurofeedback",
+    image: "/photos/space-neuro.png",
     intro:
       "O Neurofeedback é um treinamento não invasivo e sua indicação depende da análise individual das necessidades, do histórico e dos objetivos apresentados.",
     covers: [
@@ -96,6 +100,7 @@ export const services: ServiceContent[] = [
     shortDescription: "Tecnologia aplicada ao funcionamento cerebral e à qualidade de vida.",
     quizCta: "Contar quais são meus objetivos",
     quizInterest: "neuromodulacao",
+    image: "/photos/adults.png",
     intro:
       "O programa é individualizado e pode integrar diferentes recursos, conforme a análise profissional, com objetivos e frequência definidos e ajustados ao longo do processo.",
     covers: [
