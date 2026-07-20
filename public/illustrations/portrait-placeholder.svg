@@ -1,0 +1,8 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Retrato ilustrativo à espera de foto real">
+  <rect width="400" height="400" rx="28" fill="#F2EDF4"/>
+  <circle cx="200" cy="160" r="70" fill="#9464A2" opacity="0.85"/>
+  <path d="M80 380 C 80 280, 130 240, 200 240 C 270 240, 320 280, 320 380 Z" fill="#75507F" opacity="0.85"/>
+  <circle cx="320" cy="90" r="14" fill="#DE992E"/>
+  <circle cx="70" cy="110" r="10" fill="#6F8257"/>
+  <circle cx="340" cy="300" r="12" fill="#5E88AF"/>
+</svg>

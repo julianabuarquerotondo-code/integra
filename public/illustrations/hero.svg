@@ -1,0 +1,44 @@
+<svg viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração abstrata de conexão e desenvolvimento">
+  <defs>
+    <radialGradient id="haloGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#9464A2" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#9464A2" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="blobPurple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9464A2" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#9464A2" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="blobBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5E88AF" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#5E88AF" stop-opacity="0.04"/>
+    </linearGradient>
+    <linearGradient id="blobGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6F8257" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#6F8257" stop-opacity="0.02"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="320" cy="320" r="300" fill="url(#haloGrad)"/>
+
+  <path d="M120 170 C 40 240, 60 380, 150 450 C 260 520, 410 500, 470 400 C 530 300, 490 160, 380 100 C 280 46, 180 90, 120 170 Z" fill="url(#blobPurple)"/>
+  <path d="M440 400 C 510 350, 570 220, 500 140 C 440 70, 340 90, 320 160 C 300 220, 370 260, 390 310 C 405 345, 415 380, 440 400 Z" fill="url(#blobBlue)"/>
+  <path d="M160 480 C 120 520, 140 580, 210 590 C 280 600, 330 560, 320 510 C 312 470, 260 470, 220 470 C 200 470, 178 462, 160 480 Z" fill="url(#blobGreen)"/>
+
+  <g stroke="#DDD4E0" stroke-width="1.5" fill="none" stroke-linecap="round">
+    <path d="M190 240 Q 280 195 350 250 T 500 275"/>
+    <path d="M170 350 Q 265 375 320 330 T 460 370"/>
+    <path d="M230 450 Q 300 430 350 460"/>
+  </g>
+
+  <circle cx="190" cy="240" r="17" fill="#9464A2"/>
+  <circle cx="350" cy="250" r="12" fill="#DE992E"/>
+  <circle cx="500" cy="275" r="19" fill="#5E88AF"/>
+  <circle cx="170" cy="350" r="11" fill="#6F8257"/>
+  <circle cx="320" cy="330" r="15" fill="#75507F"/>
+  <circle cx="460" cy="370" r="12" fill="#9464A2"/>
+  <circle cx="230" cy="450" r="10" fill="#DE992E"/>
+  <circle cx="350" cy="460" r="13" fill="#5E88AF"/>
+
+  <circle cx="270" cy="500" r="26" fill="#F8F7F5" stroke="#9464A2" stroke-width="2.5"/>
+  <circle cx="270" cy="500" r="9" fill="#9464A2"/>
+</svg>

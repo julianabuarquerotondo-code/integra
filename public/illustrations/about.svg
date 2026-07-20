@@ -1,0 +1,16 @@
+<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração abstrata de acolhimento">
+  <defs>
+    <linearGradient id="aboutBlob1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6F8257" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#5E88AF" stop-opacity="0.10"/>
+    </linearGradient>
+  </defs>
+  <path d="M120 200 C 60 260, 70 380, 160 440 C 260 500, 400 470, 460 380 C 510 300, 470 190, 380 140 C 290 90, 180 140, 120 200 Z" fill="url(#aboutBlob1)"/>
+  <g stroke="#E8E1E9" stroke-width="1.5" fill="none">
+    <path d="M170 300 Q 260 250 340 300 T 470 280"/>
+  </g>
+  <circle cx="170" cy="300" r="14" fill="#75507F"/>
+  <circle cx="340" cy="300" r="20" fill="#DE992E"/>
+  <circle cx="470" cy="280" r="12" fill="#5E88AF"/>
+  <circle cx="260" cy="380" r="10" fill="#6F8257"/>
+</svg>

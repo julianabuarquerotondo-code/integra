@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+:root {
+  --color-purple-primary: #9464a2;
+  --color-purple-dark: #75507f;
+  --color-blue: #5e88af;
+  --color-green: #6f8257;
+  --color-gold: #de992e;
+  --color-cream: #f8f7f5;
+  --color-soft-lilac: #f2edf4;
+  --color-soft-blue: #eef4f8;
+  --color-soft-green: #f1f4ee;
+  --color-text-primary: #2f2932;
+  --color-text-secondary: #655e68;
+  --color-border: #e8e1e9;
+  --color-white: #ffffff;
+
+  --background: var(--color-cream);
+  --foreground: var(--color-text-primary);
+}
+
+@theme inline {
+  --color-purple-primary: var(--color-purple-primary);
+  --color-purple-dark: var(--color-purple-dark);
+  --color-blue: var(--color-blue);
+  --color-green: var(--color-green);
+  --color-gold: var(--color-gold);
+  --color-cream: var(--color-cream);
+  --color-soft-lilac: var(--color-soft-lilac);
+  --color-soft-blue: var(--color-soft-blue);
+  --color-soft-green: var(--color-soft-green);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-border: var(--color-border);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-lora);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-manrope), Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-lora), Georgia, serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: var(--color-soft-lilac);
+  color: var(--color-purple-dark);
+}
+
+/* Scroll-reveal (see components/ui/Reveal.tsx) */
+[data-reveal="out"] {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+[data-reveal] {
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal="in"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Soft gradient-mesh backdrop for hero / CTA bands */
+.mesh-bg {
+  position: relative;
+  isolation: isolate;
+}
+
+.mesh-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(38% 45% at 82% 8%, color-mix(in srgb, var(--color-blue) 20%, transparent), transparent 70%),
+    radial-gradient(45% 55% at 8% 92%, color-mix(in srgb, var(--color-green) 16%, transparent), transparent 70%),
+    radial-gradient(60% 60% at 100% 100%, color-mix(in srgb, var(--color-purple-primary) 14%, transparent), transparent 70%);
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float {
+    animation: none;
+  }
+}
