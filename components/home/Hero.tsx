@@ -55,15 +55,26 @@ export function Hero() {
           </ul>
         </Reveal>
 
-        <Reveal delay={150} className="relative mx-auto aspect-square w-full max-w-md">
-          <div className="animate-float relative size-full">
+        <Reveal delay={150} className="relative mx-auto w-full max-w-md lg:max-w-lg">
+          <div className="absolute -top-4 -right-4 -bottom-4 -left-4 -z-10 rounded-[2rem] bg-soft-lilac lg:-top-6 lg:-right-6" />
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] shadow-xl shadow-purple-dark/10 ring-1 ring-border">
             <Image
-              src="/illustrations/hero.svg"
-              alt="Ilustração representando conexão entre pessoas e desenvolvimento"
+              src="/photos/hero.png"
+              alt="Espaço de atendimento acolhedor do Instituto Integra+"
               fill
               priority
-              className="object-contain"
+              sizes="(min-width: 1024px) 32rem, 90vw"
+              className="object-cover"
             />
+          </div>
+          <div className="absolute -bottom-5 -left-4 flex items-center gap-3 rounded-2xl border border-border bg-white/90 px-4 py-3 shadow-lg shadow-purple-dark/10 backdrop-blur sm:-left-6">
+            <span className="inline-flex size-10 items-center justify-center rounded-xl bg-soft-green">
+              <HeartHandshake className="size-5 text-green" aria-hidden strokeWidth={1.75} />
+            </span>
+            <div>
+              <p className="text-sm font-semibold text-purple-dark">Escuta próxima</p>
+              <p className="text-xs text-text-secondary">Plano individualizado</p>
+            </div>
           </div>
         </Reveal>
       </Container>

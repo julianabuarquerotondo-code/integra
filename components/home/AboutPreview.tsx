@@ -9,13 +9,17 @@ export function AboutPreview() {
   return (
     <Section background="white">
       <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-        <Reveal className="relative mx-auto aspect-square w-full max-w-sm">
-          <Image
-            src="/illustrations/about.svg"
-            alt="Ilustração representando escuta e acolhimento"
-            fill
-            className="object-contain"
-          />
+        <Reveal className="relative mx-auto w-full max-w-md">
+          <div className="absolute -top-4 -left-4 -z-10 h-24 w-24 rounded-3xl bg-soft-green" />
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] shadow-xl shadow-purple-dark/10 ring-1 ring-border">
+            <Image
+              src="/photos/about.png"
+              alt="Ambiente de escuta e acolhimento do Instituto Integra+"
+              fill
+              sizes="(min-width: 1024px) 28rem, 90vw"
+              className="object-cover"
+            />
+          </div>
         </Reveal>
         <Reveal delay={120}>
           <p className="text-sm font-semibold uppercase tracking-wide text-green">Quem cuida</p>
