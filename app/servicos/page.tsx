@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Users, GraduationCap, FileText, ClipboardCheck } from "lucide-react";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { QuizCta } from "@/components/ui/QuizCta";
 import { cn } from "@/lib/utils/cn";
 import { services, complementaryServices, carePathway } from "@/content/services";
+
+const complementaryIcons = [Users, GraduationCap, FileText, ClipboardCheck];
 
 export const metadata: Metadata = {
   title: "Neurofeedback, Neuromodulação e Avaliação Psicopedagógica",
@@ -90,23 +93,32 @@ export default function ServicosPage() {
 
       <Section background="cream">
         <SectionHeading title="Serviços complementares" align="center" />
-        <ul className="grid gap-3 sm:grid-cols-2">
-          {complementaryServices.map((item) => (
-            <li
-              key={item}
-              className="rounded-2xl border border-border bg-white p-4 text-sm text-text-secondary transition-colors hover:border-purple-primary/30"
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {complementaryServices.map((item, index) => {
+            const Icon = complementaryIcons[index % complementaryIcons.length];
+            return (
+              <div
+                key={item}
+                className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-white p-5 text-center transition-colors hover:border-purple-primary/30"
+              >
+                <span className="flex size-11 items-center justify-center rounded-2xl bg-soft-lilac">
+                  <Icon className="size-5 text-purple-primary" aria-hidden strokeWidth={1.75} />
+                </span>
+                <p className="text-sm text-text-secondary">{item}</p>
+              </div>
+            );
+          })}
+        </div>
       </Section>
 
       <Section background="white">
         <SectionHeading title="Como funciona o acompanhamento" align="center" />
-        <ol className="mx-auto grid max-w-3xl gap-3 text-sm text-text-secondary">
+        <ol className="mx-auto grid max-w-4xl gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {carePathway.map((step, i) => (
-            <li key={step} className="flex items-center gap-3 rounded-2xl border border-border p-4">
+            <li
+              key={step}
+              className="flex items-center gap-3 rounded-2xl border border-border p-4 text-sm text-text-secondary"
+            >
               <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-soft-lilac text-xs font-semibold text-purple-dark">
                 {i + 1}
               </span>
