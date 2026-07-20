@@ -5,6 +5,11 @@ import { Reveal } from "@/components/ui/Reveal";
 import { audiences } from "@/content/site";
 
 const icons = [Baby, User, Users];
+const iconStyles = [
+  "bg-soft-lilac text-purple-primary",
+  "bg-soft-blue text-blue",
+  "bg-soft-green text-green",
+];
 
 export function Audiences() {
   return (
@@ -15,12 +20,12 @@ export function Audiences() {
           const Icon = icons[index];
           return (
             <Reveal key={audience.title} delay={index * 80}>
-              <div className="rounded-3xl bg-white p-6 text-center transition-shadow duration-300 hover:shadow-md">
-                <span className="mx-auto flex size-12 items-center justify-center rounded-2xl bg-soft-lilac">
-                  <Icon className="size-6 text-purple-primary" aria-hidden strokeWidth={1.75} />
+              <div className="flex h-full flex-col items-center rounded-3xl border border-border bg-white p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-purple-primary/30 hover:shadow-lg hover:shadow-purple-primary/5">
+                <span className={`flex size-14 items-center justify-center rounded-2xl ${iconStyles[index % iconStyles.length]}`}>
+                  <Icon className="size-7" aria-hidden strokeWidth={1.75} />
                 </span>
-                <h3 className="mt-3 text-base font-semibold text-purple-dark">{audience.title}</h3>
-                <p className="mt-2 text-sm text-text-secondary">{audience.description}</p>
+                <h3 className="mt-5 text-lg font-semibold text-purple-dark">{audience.title}</h3>
+                <p className="mt-2 text-sm text-pretty text-text-secondary">{audience.description}</p>
               </div>
             </Reveal>
           );

@@ -39,12 +39,21 @@ export function SectionHeading({
   align?: "left" | "center";
 }) {
   return (
-    <div className={cn("mb-10 max-w-2xl", align === "center" && "mx-auto text-center")}>
+    <div className={cn("mb-12 max-w-2xl", align === "center" && "mx-auto text-center")}>
       {eyebrow ? (
-        <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-green">{eyebrow}</p>
+        <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-green">{eyebrow}</p>
       ) : null}
-      <h2 className="text-2xl font-semibold text-purple-dark sm:text-3xl">{title}</h2>
-      {description ? <p className="mt-4 text-text-secondary">{description}</p> : null}
+      <h2 className="text-2xl font-semibold text-balance text-purple-dark sm:text-3xl">{title}</h2>
+      <span
+        className={cn(
+          "mt-4 block h-1 w-12 rounded-full bg-purple-primary/70",
+          align === "center" && "mx-auto",
+        )}
+        aria-hidden
+      />
+      {description ? (
+        <p className="mt-5 text-pretty text-text-secondary sm:leading-relaxed">{description}</p>
+      ) : null}
     </div>
   );
 }
