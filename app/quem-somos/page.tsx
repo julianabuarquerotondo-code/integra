@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Award, Heart, Users } from "lucide-react";
+import { Award, Heart, Users, Target, Eye, Sparkles } from "lucide-react";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { QuizCta } from "@/components/ui/QuizCta";
 import { ButtonLink } from "@/components/ui/Button";
@@ -8,6 +8,12 @@ import { InstagramIcon } from "@/components/ui/InstagramIcon";
 import { siteConfig, aboutHistory, missionVisionValues, credentialBadges } from "@/content/site";
 
 const badgeIcons = { award: Award, heart: Heart, users: Users } as const;
+
+const pillars = [
+  { icon: Target, title: "Missão", text: missionVisionValues.mission },
+  { icon: Eye, title: "Visão", text: missionVisionValues.vision },
+  { icon: Sparkles, title: "Valores", text: missionVisionValues.values.join(" · ") },
+] as const;
 
 export const metadata: Metadata = {
   title: "Vanessa Rotondo, Psicopedagoga em São Paulo",
@@ -18,12 +24,9 @@ export const metadata: Metadata = {
 export default function QuemSomosPage() {
   return (
     <>
-      <Section background="white">
+      <Section background="cream" className="pb-0 sm:pb-0">
         <SectionHeading eyebrow="Quem somos" title="Conhecimento e cuidado individualizado" align="center" />
-      </Section>
-
-      <Section background="cream">
-        <div className="grid gap-8 lg:grid-cols-3 lg:items-center">
+        <div className="grid gap-8 pb-16 sm:pb-20 lg:grid-cols-3 lg:items-center">
           <div className="relative mx-auto w-full max-w-xs lg:col-span-1">
             <div className="absolute -top-4 -left-4 -z-10 h-24 w-24 rounded-3xl bg-soft-green" />
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl shadow-xl shadow-purple-dark/10 ring-1 ring-border">
@@ -56,9 +59,12 @@ export default function QuemSomosPage() {
               })}
             </div>
 
-            <blockquote className="mt-5 border-l-2 border-green pl-4 text-sm italic text-text-secondary">
-              &ldquo;{siteConfig.professionalQuote}&rdquo;
-              <footer className="mt-1 not-italic font-medium text-purple-dark">
+            <blockquote className="relative mt-5 overflow-hidden rounded-2xl bg-purple-dark px-6 py-5 text-sm text-white/90 shadow-lg shadow-purple-dark/20">
+              <span className="absolute -top-3 left-4 font-serif text-6xl text-white/15" aria-hidden>
+                &ldquo;
+              </span>
+              <p className="relative italic">{siteConfig.professionalQuote}</p>
+              <footer className="relative mt-2 not-italic font-semibold text-white">
                 {siteConfig.professionalName}
               </footer>
             </blockquote>
@@ -76,8 +82,8 @@ export default function QuemSomosPage() {
         </div>
       </Section>
 
-      <Section background="cream">
-        <div className="mx-auto max-w-3xl rounded-3xl bg-white p-8 shadow-sm ring-1 ring-border sm:p-10">
+      <Section background="white">
+        <div className="mx-auto max-w-3xl rounded-3xl bg-cream p-8 ring-1 ring-border sm:p-10">
           <p className="text-sm font-semibold uppercase tracking-wide text-green">Nossa história</p>
           <div className="mt-3 space-y-4 text-text-secondary">
             {aboutHistory.split("\n\n").map((paragraph) => (
@@ -87,21 +93,20 @@ export default function QuemSomosPage() {
         </div>
       </Section>
 
-      <Section background="white">
+      <Section background="cream">
         <SectionHeading title="Missão, visão e valores" align="center" />
         <div className="grid gap-5 sm:grid-cols-3">
-          <div className="rounded-3xl bg-cream p-6 ring-1 ring-border">
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-green">Missão</h3>
-            <p className="mt-3 text-sm text-text-secondary">{missionVisionValues.mission}</p>
-          </div>
-          <div className="rounded-3xl bg-cream p-6 ring-1 ring-border">
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-green">Visão</h3>
-            <p className="mt-3 text-sm text-text-secondary">{missionVisionValues.vision}</p>
-          </div>
-          <div className="rounded-3xl bg-cream p-6 ring-1 ring-border">
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-green">Valores</h3>
-            <p className="mt-3 text-sm text-text-secondary">{missionVisionValues.values.join(" · ")}</p>
-          </div>
+          {pillars.map((pillar) => (
+            <div key={pillar.title} className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-border">
+              <span className="inline-flex size-10 items-center justify-center rounded-xl bg-soft-green">
+                <pillar.icon className="size-5 text-green" aria-hidden strokeWidth={1.75} />
+              </span>
+              <h3 className="mt-4 text-sm font-semibold uppercase tracking-wide text-purple-dark">
+                {pillar.title}
+              </h3>
+              <p className="mt-2 text-sm text-text-secondary">{pillar.text}</p>
+            </div>
+          ))}
         </div>
       </Section>
 
