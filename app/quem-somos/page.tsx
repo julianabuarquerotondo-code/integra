@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Award, Heart, Users } from "lucide-react";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { QuizCta } from "@/components/ui/QuizCta";
 import { ButtonLink } from "@/components/ui/Button";
 import { InstagramIcon } from "@/components/ui/InstagramIcon";
-import { siteConfig, aboutHistory, missionVisionValues } from "@/content/site";
+import { siteConfig, aboutHistory, missionVisionValues, credentialBadges } from "@/content/site";
+
+const badgeIcons = { award: Award, heart: Heart, users: Users } as const;
 
 export const metadata: Metadata = {
   title: "Vanessa Rotondo, Psicopedagoga em São Paulo",
@@ -36,8 +39,30 @@ export default function QuemSomosPage() {
           <div className="lg:col-span-2">
             <h2 className="text-2xl font-semibold text-purple-dark">{siteConfig.professionalName}</h2>
             <p className="mt-1 text-sm font-medium text-text-secondary">{siteConfig.professionalTitle}</p>
-            <p className="mt-4 text-text-secondary">{siteConfig.personalMessage}</p>
-            <p className="mt-2 text-sm text-text-secondary">{siteConfig.experienceSummary}</p>
+            <p className="mt-4 text-text-secondary">{siteConfig.experienceSummary}</p>
+
+            <div className="mt-5 grid grid-cols-3 gap-3 sm:max-w-md">
+              {credentialBadges.map((badge) => {
+                const Icon = badgeIcons[badge.icon];
+                return (
+                  <div
+                    key={badge.label}
+                    className="flex flex-col items-center gap-2 rounded-2xl bg-soft-lilac px-3 py-4 text-center"
+                  >
+                    <Icon className="size-6 text-purple-primary" aria-hidden strokeWidth={1.75} />
+                    <span className="text-xs font-medium text-text-primary">{badge.label}</span>
+                  </div>
+                );
+              })}
+            </div>
+
+            <blockquote className="mt-5 border-l-2 border-green pl-4 text-sm italic text-text-secondary">
+              &ldquo;{siteConfig.professionalQuote}&rdquo;
+              <footer className="mt-1 not-italic font-medium text-purple-dark">
+                {siteConfig.professionalName}
+              </footer>
+            </blockquote>
+
             <a
               href={siteConfig.professionalInstagramUrl}
               target="_blank"

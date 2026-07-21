@@ -9,9 +9,11 @@ export const siteConfig = {
   specializations: ["Neuroaprendizagem", "Neuromodulação"],
   registrations: [] as string[],
   experienceSummary:
-    "O trabalho une conhecimento técnico, escuta atenta e tecnologia para compreender profundamente cada caso e transformar dificuldades em novas possibilidades de aprendizagem, desenvolvimento e qualidade de vida.",
+    "Fundei o Instituto Integra+ porque acredito que toda pessoa pode aprender e se desenvolver, só precisa encontrar o caminho certo. Ao longo dos anos, desenvolvi um trabalho que une neurociência, escuta atenta e tecnologia para compreender profundamente cada caso e transformar dificuldades em novas possibilidades de aprendizagem, desenvolvimento e qualidade de vida.",
   personalMessage:
     "Acredito que cada pessoa carrega uma história única, e é a partir dela que construímos, juntos, o caminho mais adequado para o seu desenvolvimento.",
+  professionalQuote:
+    "Cada pessoa tem seu próprio jeito de aprender e se desenvolver. Meu trabalho é descobrir qual é, e mostrar que esse caminho pode ser leve, natural e até prazeroso.",
 
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5511995881553",
   whatsappDisplay: "(11) 99588-1553",
@@ -110,6 +112,12 @@ export const differentials = [
   "Tecnologia com objetivo claro",
   "Acompanhamento próximo",
   "Participação da família e da escola",
+] as const;
+
+export const credentialBadges = [
+  { icon: "award", label: "Especialista certificada" },
+  { icon: "heart", label: "Atendimento humanizado" },
+  { icon: "users", label: "Centenas de famílias atendidas" },
 ] as const;
 
 export const missionVisionValues = {
