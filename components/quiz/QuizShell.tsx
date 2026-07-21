@@ -21,10 +21,13 @@ import {
 import { normalizePhone } from "@/lib/utils/phone";
 import { createQuizWhatsappUrl } from "@/lib/whatsapp/createWhatsappUrl";
 import { siteConfig } from "@/content/site";
+import { cn } from "@/lib/utils/cn";
 import type { QuizAnswers, QuizBranch } from "@/lib/quiz/types";
 import type { ResultCopy } from "@/lib/quiz/result-copy";
 
 const STORAGE_KEY = "integra-quiz-progress";
+
+type QuizVariant = "page" | "widget";
 
 type Step =
   | { type: "intro" }
@@ -57,7 +60,28 @@ function loadStoredState(): StoredState | null {
   }
 }
 
-export function QuizShell({ sourceInterest }: { sourceInterest?: string }) {
+function Frame({
+  variant,
+  className,
+  children,
+}: {
+  variant: QuizVariant;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  if (variant === "widget") {
+    return <div className={cn("p-4 sm:p-5", className)}>{children}</div>;
+  }
+  return <Container className={cn("py-12 sm:py-16", className)}>{children}</Container>;
+}
+
+export function QuizShell({
+  sourceInterest,
+  variant = "page",
+}: {
+  sourceInterest?: string;
+  variant?: QuizVariant;
+}) {
   const stored = useMemo(() => loadStoredState(), []);
   const [answers, setAnswers] = useState<Partial<QuizAnswers>>(
     stored?.answers ?? { sourceInterest, sourcePage: "/quiz" },
@@ -197,14 +221,14 @@ export function QuizShell({ sourceInterest }: { sourceInterest?: string }) {
 
   if (submissionResult) {
     return (
-      <Container className="py-16">
+      <Frame variant={variant}>
         <ResultScreen {...submissionResult} />
-      </Container>
+      </Frame>
     );
   }
 
   if (currentStep.type === "intro") {
-    return <IntroStep onStart={() => setStepIndex(1)} />;
+    return <IntroStep variant={variant} onStart={() => setStepIndex(1)} />;
   }
 
   if (currentStep.type === "under_four") {
@@ -214,7 +238,7 @@ export function QuizShell({ sourceInterest }: { sourceInterest?: string }) {
       resultLabel: "Conversa direta com o Instituto",
     });
     return (
-      <Container className="py-16">
+      <Frame variant={variant}>
         <p className="mx-auto mb-6 max-w-xl rounded-2xl bg-soft-lilac p-4 text-center text-sm text-text-secondary">
           Para essa faixa etária, o melhor caminho é conversar diretamente com o Instituto para
           verificar quais atendimentos estão disponíveis.
@@ -225,13 +249,13 @@ export function QuizShell({ sourceInterest }: { sourceInterest?: string }) {
             Voltar
           </Button>
         </div>
-      </Container>
+      </Frame>
     );
   }
 
   return (
-    <Container className="py-12 sm:py-16">
-      <div className="mx-auto max-w-2xl">
+    <Frame variant={variant}>
+      <div className={cn(variant === "page" && "mx-auto max-w-2xl")}>
         <QuizProgress current={currentAnswerableIndex + 1} total={answerableSteps.length} />
 
         {currentStep.type === "age" ? (
@@ -321,7 +345,7 @@ export function QuizShell({ sourceInterest }: { sourceInterest?: string }) {
           ) : null}
         </div>
       </div>
-    </Container>
+    </Frame>
   );
 }
 
@@ -332,7 +356,29 @@ const introHighlights = [
   { icon: MessageCircle, label: "Você não precisa ter todas as respostas" },
 ];
 
-function IntroStep({ onStart }: { onStart: () => void }) {
+function IntroStep({ variant, onStart }: { variant: QuizVariant; onStart: () => void }) {
+  if (variant === "widget") {
+    return (
+      <div className="p-4 sm:p-5">
+        <p className="text-xs font-semibold uppercase tracking-wide text-green">Triagem rápida</p>
+        <h2 className="mt-1 text-lg font-semibold text-balance text-purple-dark">
+          Conte o que você está percebendo
+        </h2>
+        <p className="mt-2 text-pretty text-sm text-text-secondary">
+          Responda sobre você ou sobre a pessoa para quem está buscando atendimento. Leva cerca de
+          3 minutos, uma pergunta por vez.
+        </p>
+        <p className="mt-3 text-xs text-text-secondary">
+          Esta triagem possui caráter exclusivamente informativo e não constitui diagnóstico ou
+          indicação definitiva de tratamento.
+        </p>
+        <Button className="mt-4 w-full justify-center" onClick={onStart}>
+          Começar triagem
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <Container className="mesh-bg py-12 sm:py-16">
       <div className="grid items-center gap-10 lg:grid-cols-2">

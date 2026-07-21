@@ -3,7 +3,7 @@ import { Lora, Manrope } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { MobileQuizBar } from "@/components/layout/MobileQuizBar";
+import { FloatingQuizWidget } from "@/components/quiz/FloatingQuizWidget";
 import { siteConfig } from "@/content/site";
 
 const lora = Lora({
@@ -97,9 +97,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Header />
-        <main className="flex-1 pb-20 md:pb-0">{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
-        <MobileQuizBar />
+        <FloatingQuizWidget />
       </body>
     </html>
   );
