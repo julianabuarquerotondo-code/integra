@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { navigation, ctaCopy, siteConfig } from "@/content/site";
 import { cn } from "@/lib/utils/cn";
 import { ButtonLink } from "@/components/ui/Button";
 import { InstagramIcon } from "@/components/ui/InstagramIcon";
-import { createWhatsappUrl } from "@/lib/whatsapp/createWhatsappUrl";
+import { WhatsappCta } from "@/components/ui/WhatsappCta";
 
 export function Header() {
   const pathname = usePathname();
@@ -72,15 +72,7 @@ export function Header() {
               <InstagramIcon className="size-5" />
             </a>
           ) : null}
-          <a
-            href={createWhatsappUrl(siteConfig.whatsapp, siteConfig.whatsappMessages.scheduleEvaluation)}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp do Instituto Integra+"
-            className="inline-flex size-9 items-center justify-center rounded-xl text-text-secondary transition-colors hover:bg-soft-lilac hover:text-purple-dark"
-          >
-            <MessageCircle className="size-5" aria-hidden />
-          </a>
+          <WhatsappCta size="md" />
           <ButtonLink href="/contato" size="md">
             {ctaCopy.direct}
           </ButtonLink>
@@ -118,6 +110,7 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
+            <WhatsappCta size="md" className="mt-2 justify-center" />
             <ButtonLink
               href="/contato"
               size="md"
@@ -126,8 +119,8 @@ export function Header() {
             >
               {ctaCopy.direct}
             </ButtonLink>
-            <div className="mt-3 flex items-center justify-center gap-4">
-              {siteConfig.instagramUrl ? (
+            {siteConfig.instagramUrl ? (
+              <div className="mt-3 flex items-center justify-center">
                 <a
                   href={siteConfig.instagramUrl}
                   target="_blank"
@@ -137,17 +130,8 @@ export function Header() {
                 >
                   <InstagramIcon className="size-5" />
                 </a>
-              ) : null}
-              <a
-                href={createWhatsappUrl(siteConfig.whatsapp, siteConfig.whatsappMessages.scheduleEvaluation)}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WhatsApp do Instituto Integra+"
-                className="inline-flex size-10 items-center justify-center rounded-xl text-text-secondary hover:bg-soft-lilac hover:text-purple-dark"
-              >
-                <MessageCircle className="size-5" aria-hidden />
-              </a>
-            </div>
+              </div>
+            ) : null}
           </nav>
         </div>
       </div>

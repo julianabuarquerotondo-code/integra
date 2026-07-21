@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils/cn";
 
-type Variant = "primary" | "secondary" | "outline" | "ghost";
+type Variant = "primary" | "secondary" | "outline" | "ghost" | "whatsapp";
 type Size = "md" | "lg";
 
 const variantClasses: Record<Variant, string> = {
@@ -12,6 +12,8 @@ const variantClasses: Record<Variant, string> = {
   outline:
     "bg-transparent text-purple-dark border border-purple-primary/50 hover:bg-soft-lilac focus-visible:outline-purple-dark",
   ghost: "bg-transparent text-purple-dark hover:bg-soft-lilac focus-visible:outline-purple-dark",
+  whatsapp:
+    "bg-[#25D366] text-white shadow-sm shadow-[#25D366]/25 hover:bg-[#20bd5c] hover:shadow-md hover:shadow-[#25D366]/30 focus-visible:outline-[#128C7E]",
 };
 
 const sizeClasses: Record<Size, string> = {

@@ -5,6 +5,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { QuizCta } from "@/components/ui/QuizCta";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { InstagramIcon } from "@/components/ui/InstagramIcon";
+import { WhatsappIcon } from "@/components/ui/WhatsappIcon";
 import { siteConfig } from "@/content/site";
 import { createWhatsappUrl } from "@/lib/whatsapp/createWhatsappUrl";
 
@@ -31,9 +32,13 @@ export default function ContatoPage() {
             </p>
             <ButtonLink
               href={createWhatsappUrl(siteConfig.whatsapp, siteConfig.whatsappMessages.scheduleEvaluation)}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="whatsapp"
               className="mt-4 w-full justify-center"
             >
-              Agende uma avaliação
+              <WhatsappIcon className="size-4" />
+              Fale no WhatsApp
             </ButtonLink>
           </div>
           <div className="flex flex-col rounded-3xl border border-border bg-white p-6 shadow-sm">

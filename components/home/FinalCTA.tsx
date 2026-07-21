@@ -1,6 +1,7 @@
 import { Section } from "@/components/ui/Section";
 import { QuizCta } from "@/components/ui/QuizCta";
 import { ButtonLink } from "@/components/ui/Button";
+import { WhatsappCta } from "@/components/ui/WhatsappCta";
 import { Reveal } from "@/components/ui/Reveal";
 import { ctaCopy } from "@/content/site";
 
@@ -19,6 +20,7 @@ export function FinalCTA() {
             <ButtonLink href="/contato" variant="secondary" size="lg">
               {ctaCopy.direct}
             </ButtonLink>
+            <WhatsappCta size="lg" />
           </div>
         </div>
       </Reveal>

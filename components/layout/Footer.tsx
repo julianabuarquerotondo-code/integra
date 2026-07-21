@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MapPin, Phone } from "lucide-react";
 import { siteConfig, navigation } from "@/content/site";
 import { InstagramIcon } from "@/components/ui/InstagramIcon";
+import { WhatsappCta } from "@/components/ui/WhatsappCta";
 import { createWhatsappUrl } from "@/lib/whatsapp/createWhatsappUrl";
 
 export function Footer() {
@@ -57,6 +58,7 @@ export function Footer() {
                 </span>
               </li>
             </ul>
+            <WhatsappCta size="md" className="mt-4" />
           </div>
 
           <div>
