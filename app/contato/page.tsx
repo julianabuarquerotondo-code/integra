@@ -95,20 +95,6 @@ export default function ContatoPage() {
                 </li>
               ) : null}
             </ul>
-            {siteConfig.googleMapsUrl ? (
-              <div className="mt-6 aspect-video overflow-hidden rounded-2xl border border-border">
-                <iframe
-                  src={siteConfig.googleMapsUrl}
-                  title="Localização do Instituto Integra+"
-                  className="h-full w-full"
-                  loading="lazy"
-                />
-              </div>
-            ) : (
-              <div className="mt-6 flex aspect-video items-center justify-center rounded-2xl bg-soft-lilac text-sm text-text-secondary">
-                Mapa em breve
-              </div>
-            )}
           </div>
 
           <div>
