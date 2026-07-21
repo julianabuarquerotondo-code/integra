@@ -41,6 +41,7 @@ export default function ServicosPage() {
                 alt="Sessão de neurofeedback no Instituto Integra+"
                 fill
                 priority
+                quality={90}
                 sizes="(min-width: 1024px) 32rem, 90vw"
                 className="object-cover"
               />
@@ -60,6 +61,7 @@ export default function ServicosPage() {
                     src={service.image}
                     alt={service.name}
                     fill
+                    quality={90}
                     sizes="(min-width: 1024px) 28rem, 90vw"
                     className="object-cover"
                   />

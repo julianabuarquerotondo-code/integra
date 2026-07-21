@@ -19,6 +19,7 @@ export function AboutPreview() {
               src="/photos/about.png"
               alt="Ambiente de escuta e acolhimento do Instituto Integra+"
               fill
+              quality={90}
               sizes="(min-width: 1024px) 28rem, 90vw"
               className="object-cover"
             />

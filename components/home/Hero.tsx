@@ -61,6 +61,7 @@ export function Hero() {
               alt="Espaço de atendimento acolhedor do Instituto Integra+"
               fill
               priority
+              quality={90}
               sizes="(min-width: 1024px) 32rem, 90vw"
               className="object-cover"
             />

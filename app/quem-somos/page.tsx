@@ -34,6 +34,7 @@ export default function QuemSomosPage() {
                 src="/photos/portrait.png"
                 alt={`Retrato de ${siteConfig.professionalName}`}
                 fill
+                quality={90}
                 sizes="(min-width: 1024px) 20rem, 80vw"
                 className="object-cover"
               />
