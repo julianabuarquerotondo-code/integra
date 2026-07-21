@@ -1,3 +1,4 @@
+import { Circle, CircleCheck } from "lucide-react";
 import type { QuestionOption } from "@/lib/quiz/questions";
 import { cn } from "@/lib/utils/cn";
 
@@ -24,12 +25,17 @@ export function SingleChoice({
             aria-checked={checked}
             onClick={() => onChange(option.value)}
             className={cn(
-              "min-h-[44px] rounded-2xl border px-4 py-3 text-left text-sm font-medium transition-colors",
+              "flex min-h-[44px] items-center gap-3 rounded-2xl border px-4 py-3 text-left text-sm font-medium transition-all duration-200",
               checked
-                ? "border-purple-primary bg-soft-lilac text-purple-dark"
-                : "border-border bg-white text-text-primary hover:border-purple-primary/50",
+                ? "border-purple-primary bg-soft-lilac text-purple-dark shadow-sm"
+                : "border-border bg-white text-text-primary hover:-translate-y-0.5 hover:border-purple-primary/50 hover:shadow-sm",
             )}
           >
+            {checked ? (
+              <CircleCheck className="size-5 shrink-0 text-purple-primary" aria-hidden strokeWidth={1.75} />
+            ) : (
+              <Circle className="size-5 shrink-0 text-border" aria-hidden strokeWidth={1.75} />
+            )}
             {option.label}
           </button>
         );

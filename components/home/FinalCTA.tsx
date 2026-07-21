@@ -6,7 +6,7 @@ import { ctaCopy } from "@/content/site";
 
 export function FinalCTA() {
   return (
-    <Section background="cream">
+    <Section background="white">
       <Reveal>
         <div className="mesh-bg overflow-hidden rounded-[28px] bg-soft-lilac p-8 text-center sm:p-12">
           <h2 className="text-2xl font-semibold text-purple-dark sm:text-3xl">Vamos conversar?</h2>

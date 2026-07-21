@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Copy, Check, MessageCircle } from "lucide-react";
+import { Copy, Check, MessageCircle, CircleCheck, HeartHandshake } from "lucide-react";
 import { ButtonLink, Button } from "@/components/ui/Button";
 import type { ResultCopy } from "@/lib/quiz/result-copy";
 
@@ -30,6 +30,9 @@ export function ResultScreen({
 
   return (
     <div className="text-center" aria-live="polite">
+      <span className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-soft-green">
+        <CircleCheck className="size-7 text-green" aria-hidden strokeWidth={1.75} />
+      </span>
       <h2 className="text-2xl font-semibold text-purple-dark sm:text-3xl">
         Sua triagem foi registrada
       </h2>
@@ -74,6 +77,9 @@ export function ResultScreen({
 export function UnderFourResult({ whatsappUrl }: { whatsappUrl: string }) {
   return (
     <div className="text-center">
+      <span className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-soft-lilac">
+        <HeartHandshake className="size-7 text-purple-primary" aria-hidden strokeWidth={1.75} />
+      </span>
       <h2 className="text-2xl font-semibold text-purple-dark sm:text-3xl">
         Vamos conversar diretamente sobre esse caso
       </h2>

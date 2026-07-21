@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils/cn";
+
 export interface ConsentValues {
   consentResponsibility: boolean;
   consentDataUse: boolean;
@@ -66,8 +68,18 @@ function ConsentCheckbox({
   label: string;
 }) {
   return (
-    <label className="flex items-start gap-3 rounded-2xl border border-border bg-white p-4 text-sm text-text-secondary">
-      <input type="checkbox" className="mt-1 size-4" checked={checked} onChange={onChange} />
+    <label
+      className={cn(
+        "flex cursor-pointer items-start gap-3 rounded-2xl border p-4 text-sm text-text-secondary transition-colors",
+        checked ? "border-purple-primary bg-soft-lilac/40" : "border-border bg-white hover:border-purple-primary/40",
+      )}
+    >
+      <input
+        type="checkbox"
+        className="mt-1 size-4 accent-purple-primary"
+        checked={checked}
+        onChange={onChange}
+      />
       {label}
     </label>
   );

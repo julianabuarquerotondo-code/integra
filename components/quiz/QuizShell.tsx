@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowLeft, ArrowRight, Clock3, ListChecks, FileCheck2, MessageCircle } from "lucide-react";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { QuizProgress } from "./QuizProgress";
@@ -198,6 +199,10 @@ export function QuizShell({ sourceInterest }: { sourceInterest?: string }) {
     );
   }
 
+  if (currentStep.type === "intro") {
+    return <IntroStep onStart={() => setStepIndex(1)} />;
+  }
+
   if (currentStep.type === "under_four") {
     const whatsappUrl = createQuizWhatsappUrl(siteConfig.whatsapp, {
       respondentName: "responsável",
@@ -223,11 +228,7 @@ export function QuizShell({ sourceInterest }: { sourceInterest?: string }) {
   return (
     <Container className="py-12 sm:py-16">
       <div className="mx-auto max-w-2xl">
-        {currentStep.type !== "intro" ? (
-          <QuizProgress current={currentAnswerableIndex + 1} total={answerableSteps.length} />
-        ) : null}
-
-        {currentStep.type === "intro" ? <IntroStep onStart={() => setStepIndex(1)} /> : null}
+        <QuizProgress current={currentAnswerableIndex + 1} total={answerableSteps.length} />
 
         {currentStep.type === "age" ? (
           <AgeQuestion
@@ -292,70 +293,97 @@ export function QuizShell({ sourceInterest }: { sourceInterest?: string }) {
           </div>
         ) : null}
 
-        {currentStep.type !== "intro" ? (
-          <div className="mt-8 flex items-center justify-between">
-            <Button variant="ghost" onClick={goBack} disabled={stepIndex === 0}>
-              <ArrowLeft className="size-4" aria-hidden />
-              Voltar
-            </Button>
+        <div className="mt-8 flex items-center justify-between">
+          <Button variant="ghost" onClick={goBack} disabled={stepIndex === 0}>
+            <ArrowLeft className="size-4" aria-hidden />
+            Voltar
+          </Button>
 
-            {currentStep.type === "age" ? (
-              <Button onClick={handleAgeSubmit}>
-                Continuar
-                <ArrowRight className="size-4" aria-hidden />
-              </Button>
-            ) : currentStep.type === "question" ? (
-              <Button onClick={() => handleQuestionNext(currentStep.question)}>
-                Continuar
-                <ArrowRight className="size-4" aria-hidden />
-              </Button>
-            ) : currentStep.type === "contact" ? (
-              <Button onClick={handleContactNext}>
-                Continuar
-                <ArrowRight className="size-4" aria-hidden />
-              </Button>
-            ) : currentStep.type === "consent" ? (
-              <Button onClick={handleSubmit} disabled={submitState === "submitting"}>
-                {submitState === "submitting" ? "Enviando..." : "Enviar triagem"}
-              </Button>
-            ) : null}
-          </div>
-        ) : null}
+          {currentStep.type === "age" ? (
+            <Button onClick={handleAgeSubmit}>
+              Continuar
+              <ArrowRight className="size-4" aria-hidden />
+            </Button>
+          ) : currentStep.type === "question" ? (
+            <Button onClick={() => handleQuestionNext(currentStep.question)}>
+              Continuar
+              <ArrowRight className="size-4" aria-hidden />
+            </Button>
+          ) : currentStep.type === "contact" ? (
+            <Button onClick={handleContactNext}>
+              Continuar
+              <ArrowRight className="size-4" aria-hidden />
+            </Button>
+          ) : currentStep.type === "consent" ? (
+            <Button onClick={handleSubmit} disabled={submitState === "submitting"}>
+              {submitState === "submitting" ? "Enviando..." : "Enviar triagem"}
+            </Button>
+          ) : null}
+        </div>
       </div>
     </Container>
   );
 }
 
+const introHighlights = [
+  { icon: Clock3, label: "Cerca de 3 minutos" },
+  { icon: ListChecks, label: "Uma pergunta por tela, dá para voltar" },
+  { icon: FileCheck2, label: "Respostas organizadas em um resumo" },
+  { icon: MessageCircle, label: "WhatsApp já aberto com o código" },
+];
+
 function IntroStep({ onStart }: { onStart: () => void }) {
   return (
-    <div className="text-center">
-      <h1 className="text-2xl font-semibold text-purple-dark sm:text-3xl">
-        Descubra qual serviço melhor atende você
-      </h1>
-      <p className="mx-auto mt-4 max-w-xl text-text-secondary">
-        Responda a uma triagem rápida sobre você ou sobre a pessoa para quem está buscando
-        atendimento. As perguntas são adaptadas de acordo com a idade e ajudam o Instituto
-        Integra+ a compreender inicialmente as principais necessidades e objetivos.
-      </p>
+    <Container className="mesh-bg py-12 sm:py-16">
+      <div className="grid items-center gap-10 lg:grid-cols-2">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-wide text-green">Triagem rápida</p>
+          <h1 className="mt-2 text-2xl font-semibold text-balance text-purple-dark sm:text-3xl">
+            Descubra qual serviço melhor atende você
+          </h1>
+          <p className="mt-4 max-w-xl text-pretty text-text-secondary">
+            Responda sobre você ou sobre a pessoa para quem está buscando atendimento. As
+            perguntas se adaptam à idade e ajudam o Instituto a compreender a demanda inicial.
+          </p>
 
-      <ul className="mx-auto mt-6 max-w-md space-y-2 text-left text-sm text-text-secondary">
-        <li>• Tempo aproximado: 3 minutos</li>
-        <li>• Uma pergunta por tela</li>
-        <li>• Possibilidade de voltar</li>
-        <li>• As respostas serão organizadas em um resumo</li>
-        <li>• Ao final, um código será gerado</li>
-        <li>• O WhatsApp será aberto com o código já preenchido</li>
-      </ul>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            {introHighlights.map(({ icon: Icon, label }) => (
+              <li
+                key={label}
+                className="flex items-center gap-2.5 rounded-2xl border border-border bg-white/70 px-3.5 py-3 text-sm text-text-secondary backdrop-blur"
+              >
+                <span className="inline-flex size-8 shrink-0 items-center justify-center rounded-xl bg-soft-lilac">
+                  <Icon className="size-4 text-purple-primary" aria-hidden strokeWidth={1.75} />
+                </span>
+                {label}
+              </li>
+            ))}
+          </ul>
 
-      <p className="mx-auto mt-6 max-w-md text-xs text-text-secondary">
-        Esta triagem possui caráter exclusivamente informativo e de acolhimento inicial. Ela não
-        constitui diagnóstico, avaliação profissional, laudo, parecer técnico ou indicação
-        definitiva de tratamento.
-      </p>
+          <p className="mt-6 max-w-md text-xs text-text-secondary">
+            Esta triagem possui caráter exclusivamente informativo e de acolhimento inicial. Ela
+            não constitui diagnóstico, avaliação profissional, laudo, parecer técnico ou indicação
+            definitiva de tratamento.
+          </p>
 
-      <Button size="lg" className="mt-8" onClick={onStart}>
-        Começar triagem
-      </Button>
-    </div>
+          <Button size="lg" className="mt-8" onClick={onStart}>
+            Começar triagem
+          </Button>
+        </div>
+
+        <div className="relative mx-auto w-full max-w-sm">
+          <div className="absolute -top-4 -right-4 -z-10 h-24 w-24 rounded-3xl bg-soft-green" />
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] shadow-xl shadow-purple-dark/10 ring-1 ring-border">
+            <Image
+              src="/photos/quiz.png"
+              alt="Pessoa respondendo à triagem pelo celular em um momento tranquilo"
+              fill
+              sizes="(min-width: 1024px) 24rem, 80vw"
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </Container>
   );
 }
