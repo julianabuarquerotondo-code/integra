@@ -1,9 +1,9 @@
-import { Section } from "@/components/ui/Section";
-import { QuizCta } from "@/components/ui/QuizCta";
 import { ButtonLink } from "@/components/ui/Button";
-import { WhatsappCta } from "@/components/ui/WhatsappCta";
+import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
-import { ctaCopy } from "@/content/site";
+import { WhatsappIcon } from "@/components/ui/WhatsappIcon";
+import { siteConfig } from "@/content/site";
+import { createWhatsappUrl } from "@/lib/whatsapp/createWhatsappUrl";
 
 export function FinalCTA() {
   return (
@@ -15,12 +15,19 @@ export function FinalCTA() {
             Você não precisa chegar com todas as respostas. O Instituto Integra+ ajuda a encontrar
             o próximo passo.
           </p>
-          <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-            <QuizCta size="lg" />
-            <ButtonLink href="/contato" variant="secondary" size="lg">
-              {ctaCopy.direct}
+          <div className="mt-6 flex items-center justify-center gap-3">
+            <a
+              href={createWhatsappUrl(siteConfig.whatsapp, siteConfig.whatsappMessages.scheduleEvaluation)}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp do Instituto Integra+"
+              className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-sm shadow-[#25D366]/25 transition-transform hover:scale-105"
+            >
+              <WhatsappIcon className="size-6" />
+            </a>
+            <ButtonLink href="/quiz" size="lg">
+              Triagem Online
             </ButtonLink>
-            <WhatsappCta size="lg" />
           </div>
         </div>
       </Reveal>
