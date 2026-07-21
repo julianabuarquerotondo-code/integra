@@ -10,6 +10,7 @@ import { normalizePhone } from "@/lib/utils/phone";
 import { sanitizeAnswers } from "@/lib/security/sanitize";
 import { isRateLimited, getClientIdentifier } from "@/lib/security/rate-limit";
 import { createQuizWhatsappUrl } from "@/lib/whatsapp/createWhatsappUrl";
+import { siteConfig } from "@/content/site";
 import type { QuizAnswers } from "@/lib/quiz/types";
 
 export const runtime = "nodejs";
@@ -84,7 +85,7 @@ export async function POST(request: Request) {
       success: true,
       publicCode: existing.public_code,
       result,
-      whatsappUrl: createQuizWhatsappUrl(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "", {
+      whatsappUrl: createQuizWhatsappUrl(siteConfig.whatsapp, {
         respondentName: input.respondentName,
         publicCode: existing.public_code,
         resultLabel: result.label,
@@ -161,7 +162,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const whatsappUrl = createQuizWhatsappUrl(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "", {
+  const whatsappUrl = createQuizWhatsappUrl(siteConfig.whatsapp, {
     respondentName: answers.respondentName!,
     publicCode,
     resultLabel: result.label,
