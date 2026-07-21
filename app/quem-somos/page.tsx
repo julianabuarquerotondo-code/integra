@@ -76,25 +76,29 @@ export default function QuemSomosPage() {
         </div>
       </Section>
 
-      <Section background="white">
-        <div className="mx-auto max-w-2xl space-y-4 text-center text-text-secondary">
-          {aboutHistory.split("\n\n").map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+      <Section background="cream">
+        <div className="mx-auto max-w-3xl rounded-3xl bg-white p-8 shadow-sm ring-1 ring-border sm:p-10">
+          <p className="text-sm font-semibold uppercase tracking-wide text-green">Nossa história</p>
+          <div className="mt-3 space-y-4 text-text-secondary">
+            {aboutHistory.split("\n\n").map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
         </div>
       </Section>
 
-      <Section background="cream">
+      <Section background="white">
+        <SectionHeading title="Missão, visão e valores" align="center" />
         <div className="grid gap-5 sm:grid-cols-3">
-          <div className="rounded-3xl bg-white p-6">
+          <div className="rounded-3xl bg-cream p-6 ring-1 ring-border">
             <h3 className="text-sm font-semibold uppercase tracking-wide text-green">Missão</h3>
             <p className="mt-3 text-sm text-text-secondary">{missionVisionValues.mission}</p>
           </div>
-          <div className="rounded-3xl bg-white p-6">
+          <div className="rounded-3xl bg-cream p-6 ring-1 ring-border">
             <h3 className="text-sm font-semibold uppercase tracking-wide text-green">Visão</h3>
             <p className="mt-3 text-sm text-text-secondary">{missionVisionValues.vision}</p>
           </div>
-          <div className="rounded-3xl bg-white p-6">
+          <div className="rounded-3xl bg-cream p-6 ring-1 ring-border">
             <h3 className="text-sm font-semibold uppercase tracking-wide text-green">Valores</h3>
             <p className="mt-3 text-sm text-text-secondary">{missionVisionValues.values.join(" · ")}</p>
           </div>
