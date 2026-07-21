@@ -137,19 +137,16 @@ npm run test:e2e     # Playwright — fluxo completo do quiz (requer npx playwri
 Em **Project Settings → Domains** na Vercel, adicione o domínio do Instituto e siga as instruções
 de DNS. Atualize `NEXT_PUBLIC_SITE_URL` após a configuração.
 
-## 16. Configurando Vercel Cron
+## 16. Vercel Cron
 
-A rotina de retenção (`/api/cron/cleanup`) não é ativada automaticamente. Para ativá-la, adicione
-ao `vercel.json` (crie apenas se for usar cron):
-
-```json
-{
-  "crons": [{ "path": "/api/cron/cleanup", "schedule": "0 6 * * *" }]
-}
-```
+O `vercel.json` já está configurado para rodar `/api/cron/cleanup` todo dia às 6h. Além de aplicar
+a retenção (`QUIZ_RETENTION_DAYS`), essa chamada diária também mantém o projeto Supabase ativo —
+projetos gratuitos do Supabase pausam sozinhos após 7 dias sem nenhuma atividade, e uma chamada
+por dia evita isso com folga.
 
 A rota exige o header `Authorization: Bearer <CRON_SECRET>` — a Vercel Cron já envia esse header
-automaticamente quando `CRON_SECRET` está configurado nas variáveis de ambiente do projeto.
+automaticamente quando `CRON_SECRET` está configurado nas variáveis de ambiente do projeto na
+Vercel (não esqueça de adicioná-lo lá também, além do `.env.local`).
 
 ## 17. Testando PDF e e-mail
 
