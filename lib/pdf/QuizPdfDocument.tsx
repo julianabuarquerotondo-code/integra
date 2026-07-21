@@ -8,7 +8,9 @@ import { formatDateTimeBR } from "@/lib/utils/date";
 
 const styles = StyleSheet.create({
   page: {
-    padding: 36,
+    paddingTop: 36,
+    paddingHorizontal: 36,
+    paddingBottom: 70,
     fontSize: 10,
     fontFamily: "Helvetica",
     color: "#2F2932",
@@ -21,9 +23,9 @@ const styles = StyleSheet.create({
     borderBottomColor: "#9464A2",
     paddingBottom: 12,
   },
-  logo: { width: 120, height: undefined, marginRight: 16 },
-  headerText: { flexGrow: 1 },
-  title: { fontSize: 14, fontWeight: 700, color: "#75507F", marginBottom: 2 },
+  logo: { width: 90, height: 34, marginRight: 16, flexShrink: 0 },
+  headerText: { flexGrow: 1, flexShrink: 1, flexBasis: 0 },
+  title: { fontSize: 13, fontWeight: 700, color: "#75507F", marginBottom: 2 },
   subtitle: { fontSize: 10, color: "#655E68" },
   code: { fontSize: 11, fontWeight: 700, color: "#9464A2", marginTop: 4 },
   sectionTitle: {
@@ -173,7 +175,7 @@ export function QuizPdfDocument({
         ) : null}
 
         <Text style={styles.sectionTitle}>Orientação inicial</Text>
-        <View style={styles.resultBox}>
+        <View style={styles.resultBox} wrap={false}>
           <Text style={styles.resultTitle}>{result.label}</Text>
           <Text>{result.description}</Text>
         </View>
