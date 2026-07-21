@@ -15,16 +15,17 @@ export function FinalCTA() {
             Você não precisa chegar com todas as respostas. O Instituto Integra+ ajuda a encontrar
             o próximo passo.
           </p>
-          <div className="mt-6 flex items-center justify-center gap-3">
-            <a
+          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <ButtonLink
               href={createWhatsappUrl(siteConfig.whatsapp, siteConfig.whatsappMessages.scheduleEvaluation)}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="WhatsApp do Instituto Integra+"
-              className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-sm shadow-[#25D366]/25 transition-transform hover:scale-105"
+              variant="whatsapp"
+              size="lg"
             >
-              <WhatsappIcon className="size-6" />
-            </a>
+              <WhatsappIcon className="size-4" />
+              Fale conosco
+            </ButtonLink>
             <ButtonLink href="/quiz" size="lg">
               Triagem Online
             </ButtonLink>

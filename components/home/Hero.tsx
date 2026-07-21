@@ -2,9 +2,11 @@ import Image from "next/image";
 import { ShieldCheck, HeartHandshake, Users2 } from "lucide-react";
 import { QuizCta } from "@/components/ui/QuizCta";
 import { ButtonLink } from "@/components/ui/Button";
+import { WhatsappIcon } from "@/components/ui/WhatsappIcon";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { ctaCopy, siteConfig } from "@/content/site";
+import { createWhatsappUrl } from "@/lib/whatsapp/createWhatsappUrl";
 
 const trustBadges = [
   { icon: HeartHandshake, label: "Atendimento individualizado" },
@@ -31,8 +33,15 @@ export function Hero() {
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <QuizCta size="lg" />
-            <ButtonLink href="/contato" variant="secondary" size="lg">
-              {ctaCopy.direct}
+            <ButtonLink
+              href={createWhatsappUrl(siteConfig.whatsapp, siteConfig.whatsappMessages.scheduleEvaluation)}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="whatsapp"
+              size="lg"
+            >
+              <WhatsappIcon className="size-4" />
+              Fale conosco
             </ButtonLink>
           </div>
 
