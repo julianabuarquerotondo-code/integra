@@ -21,12 +21,12 @@ export const siteConfig = {
   address: "R. Piracema, 216, Santa Terezinha",
   city: "São Paulo, SP",
   postalCode: "02460-040",
-  openingHours: "Segunda a sexta, das 8h às 18h",
+  openingHours: "Segunda a sexta, das 8h às 19h30",
   inPersonCare: true,
   onlineCare: "[INFORMAR SE HÁ ATENDIMENTO ON-LINE]",
 
-  instagramUrl:
-    process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/institutointegramais/",
+  // O Instagram do Instituto foi descontinuado; todos os links apontam para o perfil pessoal da Vanessa.
+  instagramUrl: "https://www.instagram.com/psicovanessa/",
   professionalInstagramUrl: "https://www.instagram.com/psicovanessa/",
   googleMapsUrl: process.env.NEXT_PUBLIC_GOOGLE_MAPS_URL || "",
 

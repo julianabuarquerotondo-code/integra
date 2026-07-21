@@ -67,7 +67,7 @@ export function Header() {
               href={siteConfig.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Instagram do Instituto Integra+"
+              aria-label="Instagram da Vanessa Rotondo"
               className="inline-flex size-9 items-center justify-center rounded-xl text-text-secondary transition-colors hover:bg-soft-lilac hover:text-purple-dark"
             >
               <InstagramIcon className="size-5" />
@@ -142,7 +142,7 @@ export function Header() {
                   href={siteConfig.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Instagram do Instituto Integra+"
+                  aria-label="Instagram da Vanessa Rotondo"
                   className="inline-flex size-10 items-center justify-center rounded-xl text-text-secondary hover:bg-soft-lilac hover:text-purple-dark"
                 >
                   <InstagramIcon className="size-5" />

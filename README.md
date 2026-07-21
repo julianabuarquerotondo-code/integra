@@ -34,7 +34,7 @@ Ver `.env.example`. Nenhuma chave secreta usa o prefixo `NEXT_PUBLIC_`.
 - `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `INSTITUTE_EMAIL` — envio de e-mails via Resend.
 - `QUIZ_RETENTION_DAYS` — dias de retenção das submissões (rotina de limpeza via cron).
 - `CRON_SECRET` — segredo usado para autorizar a rota `/api/cron/cleanup`.
-- `NEXT_PUBLIC_INSTAGRAM_URL`, `NEXT_PUBLIC_GOOGLE_MAPS_URL` — opcionais.
+- `NEXT_PUBLIC_GOOGLE_MAPS_URL` — opcional.
 
 Sem `NEXT_PUBLIC_SUPABASE_URL`/`SUPABASE_SECRET_KEY` configurados, o quiz responde de forma
 controlada (503) em vez de falhar — útil para rodar o site localmente sem infraestrutura completa.
