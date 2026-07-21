@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Award, Heart, Users, Target, Eye, Sparkles } from "lucide-react";
+import { Award, Heart, Users, Target, Eye, Sparkles, Home } from "lucide-react";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { QuizCta } from "@/components/ui/QuizCta";
 import { ButtonLink } from "@/components/ui/Button";
@@ -84,12 +84,22 @@ export default function QuemSomosPage() {
       </Section>
 
       <Section background="white">
-        <div className="mx-auto max-w-3xl rounded-3xl bg-cream p-8 ring-1 ring-border sm:p-10">
-          <p className="text-sm font-semibold uppercase tracking-wide text-green">Nossa história</p>
-          <div className="mt-3 space-y-4 text-text-secondary">
+        <div className="mx-auto max-w-3xl overflow-hidden rounded-3xl bg-cream ring-1 ring-border">
+          <div className="border-b border-border/60 bg-white px-8 py-6 sm:px-10">
+            <span className="inline-flex size-10 items-center justify-center rounded-xl bg-soft-green">
+              <Home className="size-5 text-green" aria-hidden strokeWidth={1.75} />
+            </span>
+            <p className="mt-3 text-sm font-semibold uppercase tracking-wide text-green">
+              Nossa história
+            </p>
+          </div>
+          <div className="space-y-4 p-8 text-text-secondary sm:p-10">
             {aboutHistory.split("\n\n").map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
+            <div className="pt-2">
+              <QuizCta label="Conhecer o próximo passo" />
+            </div>
           </div>
         </div>
       </Section>

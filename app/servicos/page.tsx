@@ -3,8 +3,11 @@ import Image from "next/image";
 import { Users, GraduationCap, FileText, ClipboardCheck } from "lucide-react";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { QuizCta } from "@/components/ui/QuizCta";
+import { WhatsappIcon } from "@/components/ui/WhatsappIcon";
 import { cn } from "@/lib/utils/cn";
 import { services, complementaryServices, carePathway } from "@/content/services";
+import { siteConfig } from "@/content/site";
+import { createWhatsappUrl } from "@/lib/whatsapp/createWhatsappUrl";
 
 const complementaryIcons = [Users, GraduationCap, FileText, ClipboardCheck];
 
@@ -29,8 +32,17 @@ export default function ServicosPage() {
               Sem protocolo genérico. Se tiver dúvidas, a triagem rápida ajuda a organizar o
               primeiro contato.
             </p>
-            <div className="mt-8">
+            <div className="mt-8 flex flex-wrap items-center gap-3">
               <QuizCta size="lg" />
+              <a
+                href={createWhatsappUrl(siteConfig.whatsapp, siteConfig.whatsappMessages.scheduleEvaluation)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp do Instituto Integra+"
+                className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-sm shadow-[#25D366]/25 transition-transform hover:scale-105"
+              >
+                <WhatsappIcon className="size-6" />
+              </a>
             </div>
           </div>
           <div className="relative mx-auto w-full max-w-md lg:max-w-lg">
