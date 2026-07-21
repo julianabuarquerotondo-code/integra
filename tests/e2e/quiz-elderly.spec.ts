@@ -33,7 +33,7 @@ test("idoso: mudança repentina resulta em orientação para avaliação de saú
   }
 
   await page.getByLabel("Nome de quem está respondendo").fill("Carlos Teste");
-  await page.getByLabel("WhatsApp").fill("11966665555");
+  await page.getByLabel("WhatsApp", { exact: true }).fill("11966665555");
   await page.getByLabel("Cidade").fill("Sorocaba");
   await page.getByRole("button", { name: "Noite" }).click();
   await page.getByRole("button", { name: "Continuar" }).click();

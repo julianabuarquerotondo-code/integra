@@ -38,7 +38,7 @@ export async function sendQuizEmail(params: SendQuizEmailParams): Promise<void> 
   const resend = new Resend(apiKey);
   const result = resultCopy[params.resultKey];
 
-  const subject = `Nova triagem ${params.publicCode} — ${params.respondentName} — ${ageGroupLabel(params.ageGroup)}`;
+  const subject = `Nova triagem ${params.publicCode}: ${params.respondentName}, ${ageGroupLabel(params.ageGroup)}`;
 
   const html = `
     <div style="font-family: Arial, sans-serif; color: #2F2932;">

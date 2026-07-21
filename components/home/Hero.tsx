@@ -25,8 +25,8 @@ export function Hero() {
             Psicopedagogia, Neuroaprendizagem e Neuromodulação
           </h1>
           <p className="mt-5 max-w-md text-base text-pretty text-text-secondary sm:text-lg sm:leading-relaxed">
-            O primeiro passo para compreender dificuldades de aprendizagem, atenção e memória —
-            com um plano pensado para crianças, adultos e idosos.
+            O primeiro passo para compreender dificuldades de aprendizagem, atenção e memória, com
+            um plano pensado para crianças, adultos e idosos.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -36,9 +36,7 @@ export function Hero() {
             </ButtonLink>
           </div>
 
-          <p className="mt-4 text-sm text-text-secondary">
-            Triagem de {ctaCopy.quizDuration} {ctaCopy.quizAgeNote}
-          </p>
+          <p className="mt-4 text-sm text-text-secondary">Triagem de {ctaCopy.quizDuration}</p>
 
           <ul className="mt-8 grid gap-3 sm:grid-cols-3">
             {trustBadges.map(({ icon: Icon, label }) => (

@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { MapPin, Clock, Mail, Phone, AtSign, MessageCircle, ClipboardCheck } from "lucide-react";
+import { MapPin, Clock, Phone, MessageCircle, ClipboardCheck } from "lucide-react";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
 import { QuizCta } from "@/components/ui/QuizCta";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { InstagramIcon } from "@/components/ui/InstagramIcon";
 import { siteConfig } from "@/content/site";
 import { createWhatsappUrl } from "@/lib/whatsapp/createWhatsappUrl";
 
 export const metadata: Metadata = {
-  title: "Contato — Agende uma avaliação em São Paulo",
+  title: "Agende uma avaliação em São Paulo",
   description:
     "Fale com o Instituto Integra+ pelo WhatsApp, agende uma avaliação ou responda à triagem inicial. Atendimento em Santa Terezinha, São Paulo.",
 };
@@ -57,13 +58,14 @@ export default function ContatoPage() {
                 <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-xl bg-soft-lilac">
                   <Phone className="size-4 text-purple-primary" aria-hidden />
                 </span>
-                {siteConfig.whatsappDisplay}
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-xl bg-soft-lilac">
-                  <Mail className="size-4 text-purple-primary" aria-hidden />
-                </span>
-                {siteConfig.email}
+                <a
+                  href={createWhatsappUrl(siteConfig.whatsapp, siteConfig.whatsappMessages.scheduleEvaluation)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  {siteConfig.whatsappDisplay}
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-xl bg-soft-lilac">
@@ -80,7 +82,7 @@ export default function ContatoPage() {
               {siteConfig.instagramUrl ? (
                 <li className="flex items-center gap-3">
                   <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-xl bg-soft-lilac">
-                    <AtSign className="size-4 text-purple-primary" aria-hidden />
+                    <InstagramIcon className="size-4 text-purple-primary" />
                   </span>
                   <a href={siteConfig.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
                     Instagram

@@ -329,7 +329,7 @@ const introHighlights = [
   { icon: Clock3, label: "Cerca de 3 minutos" },
   { icon: ListChecks, label: "Uma pergunta por tela, dá para voltar" },
   { icon: FileCheck2, label: "Respostas organizadas em um resumo" },
-  { icon: MessageCircle, label: "WhatsApp já aberto com o código" },
+  { icon: MessageCircle, label: "Você não precisa ter todas as respostas" },
 ];
 
 function IntroStep({ onStart }: { onStart: () => void }) {
@@ -343,7 +343,7 @@ function IntroStep({ onStart }: { onStart: () => void }) {
           </h1>
           <p className="mt-4 max-w-xl text-pretty text-text-secondary">
             Responda sobre você ou sobre a pessoa para quem está buscando atendimento. As
-            perguntas se adaptam à idade e ajudam o Instituto a compreender a demanda inicial.
+            respostas ajudam o Instituto a compreender a demanda inicial.
           </p>
 
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">

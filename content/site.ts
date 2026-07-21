@@ -9,22 +9,23 @@ export const siteConfig = {
   specializations: ["Neuroaprendizagem", "Neuromodulação"],
   registrations: [] as string[],
   experienceSummary:
-    "Atendimento individualizado, com escuta próxima e planejamento construído para cada pessoa.",
+    "O trabalho une conhecimento técnico, escuta atenta e tecnologia para compreender profundamente cada caso e transformar dificuldades em novas possibilidades de aprendizagem, desenvolvimento e qualidade de vida.",
   personalMessage:
-    "Cada pessoa chega com uma história diferente — meu trabalho começa por entender qual é a sua.",
+    "Acredito que cada pessoa carrega uma história única, e é a partir dela que construímos, juntos, o caminho mais adequado para o seu desenvolvimento.",
 
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5511995881553",
   whatsappDisplay: "(11) 99588-1553",
   phone: "(11) 99588-1553",
-  email: "[E-MAIL A SER FORNECIDO]",
-  address: "R. Piracema, 216 — Santa Terezinha",
+  address: "R. Piracema, 216, Santa Terezinha",
   city: "São Paulo, SP",
   postalCode: "02460-040",
   openingHours: "Segunda a sexta, das 8h às 18h",
   inPersonCare: true,
   onlineCare: "[INFORMAR SE HÁ ATENDIMENTO ON-LINE]",
 
-  instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "",
+  instagramUrl:
+    process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/institutointegramais/",
+  professionalInstagramUrl: "https://www.instagram.com/psicovanessa/",
   googleMapsUrl: process.env.NEXT_PUBLIC_GOOGLE_MAPS_URL || "",
 
   whatsappMessages: {
@@ -54,8 +55,7 @@ export const ctaCopy = {
   ],
   direct: "Agende uma avaliação",
   quizDuration: "3 minutos.",
-  quizAgeNote: "Perguntas adaptadas à idade.",
-  quizDisclaimer: "Triagem informativa — não substitui avaliação profissional.",
+  quizDisclaimer: "Triagem informativa. Não substitui avaliação profissional.",
 } as const;
 
 export const audiences = [
@@ -114,12 +114,12 @@ export const differentials = [
 
 export const missionVisionValues = {
   mission:
-    "Promover o desenvolvimento da aprendizagem e do funcionamento cognitivo com avaliação, intervenção e tecnologia aplicadas de forma individualizada.",
+    "Promover o desenvolvimento da aprendizagem e do funcionamento cognitivo por meio de avaliação, intervenção e tecnologia aplicadas de forma individualizada, ética e responsável.",
   vision:
-    "Ser referência em neuroaprendizagem e neuromodulação, unindo conhecimento, inovação e cuidado.",
+    "Ser referência em neuroaprendizagem e neuromodulação, unindo conhecimento, inovação e cuidado em cada fase da vida.",
   values: ["Individualidade", "Ética", "Acolhimento", "Conhecimento", "Inovação"],
 } as const;
 
-export const aboutHistory = `O Instituto Integra+ nasceu para oferecer um espaço de escuta e desenvolvimento individualizado para quem enfrenta desafios de aprendizagem, atenção, memória ou desempenho cognitivo.
+export const aboutHistory = `O Instituto Integra+ nasceu do desejo de oferecer um espaço de escuta verdadeira e desenvolvimento individualizado para quem enfrenta desafios de aprendizagem, atenção, memória ou desempenho cognitivo.
 
-Conhecimento especializado, tecnologia e um plano construído para cada pessoa.`;
+Aqui, conhecimento especializado e tecnologia caminham lado a lado com o cuidado humano, resultando em um plano construído especialmente para cada pessoa, em cada fase da vida.`;

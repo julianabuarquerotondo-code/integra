@@ -14,8 +14,8 @@ export function QuizBanner() {
               Não sabe por onde começar?
             </h2>
             <p className="mx-auto mt-3 max-w-md text-text-secondary lg:mx-0">
-              Uma triagem rápida ajuda a organizar suas respostas e gerar um código para continuar
-              a conversa pelo WhatsApp.
+              Uma triagem rápida ajuda a organizar suas respostas para o primeiro contato com o
+              Instituto.
             </p>
             <div className="mt-6 flex justify-center lg:justify-start">
               <QuizCta size="lg" />

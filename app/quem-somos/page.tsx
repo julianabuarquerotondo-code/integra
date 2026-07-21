@@ -3,10 +3,11 @@ import Image from "next/image";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { QuizCta } from "@/components/ui/QuizCta";
 import { ButtonLink } from "@/components/ui/Button";
+import { InstagramIcon } from "@/components/ui/InstagramIcon";
 import { siteConfig, aboutHistory, missionVisionValues } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Vanessa Rotondo — Psicopedagoga em São Paulo",
+  title: "Vanessa Rotondo, Psicopedagoga em São Paulo",
   description:
     "Conheça o Instituto Integra+ e Vanessa Rotondo, psicopedagoga especializada em Neuromodulação e Neuroaprendizagem em São Paulo.",
 };
@@ -37,6 +38,15 @@ export default function QuemSomosPage() {
             <p className="mt-1 text-sm font-medium text-text-secondary">{siteConfig.professionalTitle}</p>
             <p className="mt-4 text-text-secondary">{siteConfig.personalMessage}</p>
             <p className="mt-2 text-sm text-text-secondary">{siteConfig.experienceSummary}</p>
+            <a
+              href={siteConfig.professionalInstagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-purple-dark hover:underline"
+            >
+              <InstagramIcon className="size-4" />
+              Instagram da Vanessa
+            </a>
           </div>
         </div>
       </Section>

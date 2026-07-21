@@ -24,7 +24,7 @@ test("criança/adolescente: fluxo completo até o resultado com código e WhatsA
   await page.goto("/quiz");
   await page.getByRole("button", { name: "Começar triagem" }).click();
 
-  await page.getByRole("radio", { name: "4 a 16 anos" }).click();
+  await page.getByRole("radio", { name: "4 a 10 anos" }).click();
   await page.getByRole("button", { name: "Continuar" }).click();
 
   // Percorre todas as perguntas do caminho A escolhendo a primeira opção disponível.
@@ -35,7 +35,7 @@ test("criança/adolescente: fluxo completo até o resultado com código e WhatsA
   }
 
   await page.getByLabel("Nome de quem está respondendo").fill("Maria Teste");
-  await page.getByLabel("WhatsApp").fill("11999998888");
+  await page.getByLabel("WhatsApp", { exact: true }).fill("11999998888");
   await page.getByLabel("Cidade").fill("São Paulo");
   await page.getByRole("button", { name: "Tarde" }).click();
   await page.getByRole("button", { name: "Continuar" }).click();

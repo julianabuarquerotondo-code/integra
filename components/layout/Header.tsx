@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
-import { navigation, ctaCopy } from "@/content/site";
+import { Menu, X, MessageCircle } from "lucide-react";
+import { navigation, ctaCopy, siteConfig } from "@/content/site";
 import { cn } from "@/lib/utils/cn";
 import { ButtonLink } from "@/components/ui/Button";
+import { InstagramIcon } from "@/components/ui/InstagramIcon";
+import { createWhatsappUrl } from "@/lib/whatsapp/createWhatsappUrl";
 
 export function Header() {
   const pathname = usePathname();
@@ -58,7 +60,27 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-3 md:flex">
+          {siteConfig.instagramUrl ? (
+            <a
+              href={siteConfig.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram do Instituto Integra+"
+              className="inline-flex size-9 items-center justify-center rounded-xl text-text-secondary transition-colors hover:bg-soft-lilac hover:text-purple-dark"
+            >
+              <InstagramIcon className="size-5" />
+            </a>
+          ) : null}
+          <a
+            href={createWhatsappUrl(siteConfig.whatsapp, siteConfig.whatsappMessages.scheduleEvaluation)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp do Instituto Integra+"
+            className="inline-flex size-9 items-center justify-center rounded-xl text-text-secondary transition-colors hover:bg-soft-lilac hover:text-purple-dark"
+          >
+            <MessageCircle className="size-5" aria-hidden />
+          </a>
           <ButtonLink href="/contato" size="md">
             {ctaCopy.direct}
           </ButtonLink>
@@ -104,6 +126,28 @@ export function Header() {
             >
               {ctaCopy.direct}
             </ButtonLink>
+            <div className="mt-3 flex items-center justify-center gap-4">
+              {siteConfig.instagramUrl ? (
+                <a
+                  href={siteConfig.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram do Instituto Integra+"
+                  className="inline-flex size-10 items-center justify-center rounded-xl text-text-secondary hover:bg-soft-lilac hover:text-purple-dark"
+                >
+                  <InstagramIcon className="size-5" />
+                </a>
+              ) : null}
+              <a
+                href={createWhatsappUrl(siteConfig.whatsapp, siteConfig.whatsappMessages.scheduleEvaluation)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp do Instituto Integra+"
+                className="inline-flex size-10 items-center justify-center rounded-xl text-text-secondary hover:bg-soft-lilac hover:text-purple-dark"
+              >
+                <MessageCircle className="size-5" aria-hidden />
+              </a>
+            </div>
           </nav>
         </div>
       </div>

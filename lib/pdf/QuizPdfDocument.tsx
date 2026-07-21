@@ -71,10 +71,10 @@ const styles = StyleSheet.create({
 
 function titleForAgeGroup(ageGroup: AgeGroup): string {
   if (ageGroup === "child_teen")
-    return "Resumo de Triagem Inicial — Neuroaprendizagem e Desenvolvimento";
+    return "Resumo de Triagem Inicial: Neuroaprendizagem e Desenvolvimento";
   if (ageGroup === "elderly")
-    return "Resumo de Triagem Inicial — Necessidades e Objetivos Cognitivos";
-  return "Resumo de Triagem Inicial — Funcionamento e Desempenho Cognitivo";
+    return "Resumo de Triagem Inicial: Necessidades e Objetivos Cognitivos";
+  return "Resumo de Triagem Inicial: Funcionamento e Desempenho Cognitivo";
 }
 
 export interface QuizAnswerLabel {

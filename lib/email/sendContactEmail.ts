@@ -30,7 +30,7 @@ export async function sendContactEmail(input: ContactFormInput): Promise<void> {
   await resend.emails.send({
     from,
     to,
-    subject: `Novo contato pelo site — ${input.name}`,
+    subject: `Novo contato pelo site: ${input.name}`,
     html,
   });
 }

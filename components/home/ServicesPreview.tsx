@@ -14,7 +14,7 @@ export function ServicesPreview() {
       <SectionHeading
         eyebrow="Serviços"
         title="Como podemos ajudar"
-        description="Avaliação e intervenção em neuroaprendizagem, Neurofeedback e Neuromodulação — cada serviço com um objetivo claro."
+        description="Avaliação e intervenção em neuroaprendizagem, Neurofeedback e Neuromodulação, cada serviço com um objetivo claro."
       />
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

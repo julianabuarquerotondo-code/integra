@@ -23,7 +23,7 @@ test("adulto: interesse em Neurofeedback resulta no serviço correspondente", as
 
   await page.goto("/quiz");
   await page.getByRole("button", { name: "Começar triagem" }).click();
-  await page.getByRole("radio", { name: "17 a 59 anos" }).click();
+  await page.getByRole("radio", { name: "18 a 30 anos" }).click();
   await page.getByRole("button", { name: "Continuar" }).click();
 
   for (let i = 0; i < 7; i++) {
@@ -33,7 +33,7 @@ test("adulto: interesse em Neurofeedback resulta no serviço correspondente", as
   }
 
   await page.getByLabel("Nome de quem está respondendo").fill("João Teste");
-  await page.getByLabel("WhatsApp").fill("11988887777");
+  await page.getByLabel("WhatsApp", { exact: true }).fill("11988887777");
   await page.getByLabel("Cidade").fill("Campinas");
   await page.getByRole("button", { name: "Manhã" }).click();
   await page.getByRole("button", { name: "Continuar" }).click();
@@ -70,7 +70,7 @@ test("adulto: respostas variadas resultam em conversa inicial", async ({ page })
 
   await page.goto("/quiz");
   await page.getByRole("button", { name: "Começar triagem" }).click();
-  await page.getByRole("radio", { name: "17 a 59 anos" }).click();
+  await page.getByRole("radio", { name: "18 a 30 anos" }).click();
   await page.getByRole("button", { name: "Continuar" }).click();
 
   for (let i = 0; i < 7; i++) {
@@ -80,7 +80,7 @@ test("adulto: respostas variadas resultam em conversa inicial", async ({ page })
   }
 
   await page.getByLabel("Nome de quem está respondendo").fill("Ana Teste");
-  await page.getByLabel("WhatsApp").fill("11977776666");
+  await page.getByLabel("WhatsApp", { exact: true }).fill("11977776666");
   await page.getByLabel("Cidade").fill("Santos");
   await page.getByRole("button", { name: "Qualquer horário" }).click();
   await page.getByRole("button", { name: "Continuar" }).click();
