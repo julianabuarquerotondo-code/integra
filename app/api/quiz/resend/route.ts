@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getSupabaseAdmin, isSupabaseConfigured, QUIZ_PDF_BUCKET } from "@/lib/supabase/admin";
 import { sendQuizEmail, isEmailConfigured } from "@/lib/email/sendQuizEmail";
-import type { QuizResultKey } from "@/lib/quiz/types";
+import type { AgeGroup, QuizResultKey } from "@/lib/quiz/types";
 
 export const runtime = "nodejs";
 
@@ -56,7 +56,7 @@ export async function POST(request: Request) {
       createdAt: new Date(submission.created_at),
       respondentName: submission.respondent_name,
       phone: submission.phone,
-      age: submission.age,
+      ageGroup: submission.age_group as AgeGroup,
       resultKey: submission.result_key as QuizResultKey,
       bestContactTime: submission.best_contact_time,
       additionalNotes: submission.additional_notes ?? undefined,

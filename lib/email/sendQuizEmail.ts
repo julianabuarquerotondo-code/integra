@@ -1,7 +1,8 @@
 import "server-only";
 import { Resend } from "resend";
-import type { QuizResultKey } from "@/lib/quiz/types";
+import type { AgeGroup, QuizResultKey } from "@/lib/quiz/types";
 import { resultCopy } from "@/lib/quiz/result-copy";
+import { ageGroupLabel } from "@/lib/quiz/questions";
 import { formatDateTimeBR } from "@/lib/utils/date";
 import { pdfFileNameForCode } from "@/lib/pdf/generateQuizPdf";
 
@@ -10,7 +11,7 @@ export interface SendQuizEmailParams {
   createdAt: Date;
   respondentName: string;
   phone: string;
-  age: number;
+  ageGroup: AgeGroup;
   resultKey: QuizResultKey;
   bestContactTime: string;
   additionalNotes?: string;
@@ -37,7 +38,7 @@ export async function sendQuizEmail(params: SendQuizEmailParams): Promise<void> 
   const resend = new Resend(apiKey);
   const result = resultCopy[params.resultKey];
 
-  const subject = `Nova triagem ${params.publicCode} — ${params.respondentName} — ${params.age} anos`;
+  const subject = `Nova triagem ${params.publicCode} — ${params.respondentName} — ${ageGroupLabel(params.ageGroup)}`;
 
   const html = `
     <div style="font-family: Arial, sans-serif; color: #2F2932;">
@@ -46,7 +47,7 @@ export async function sendQuizEmail(params: SendQuizEmailParams): Promise<void> 
       <p><strong>Data:</strong> ${formatDateTimeBR(params.createdAt)}</p>
       <p><strong>Nome de quem respondeu:</strong> ${params.respondentName}</p>
       <p><strong>WhatsApp:</strong> ${params.phone}</p>
-      <p><strong>Idade:</strong> ${params.age} anos</p>
+      <p><strong>Faixa etária:</strong> ${ageGroupLabel(params.ageGroup)}</p>
       <p><strong>Resultado inicial:</strong> ${result.label}</p>
       <p><strong>Melhor período para contato:</strong> ${params.bestContactTime}</p>
       ${params.additionalNotes ? `<p><strong>Relato complementar:</strong> ${params.additionalNotes}</p>` : ""}

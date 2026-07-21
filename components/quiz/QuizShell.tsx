@@ -15,9 +15,9 @@ import {
   branchAQuestions,
   branchBQuestions,
   branchCQuestions,
+  ageBrackets,
   type QuestionDef,
 } from "@/lib/quiz/questions";
-import { resolveBranch } from "@/lib/quiz/engine";
 import { normalizePhone } from "@/lib/utils/phone";
 import { createQuizWhatsappUrl } from "@/lib/whatsapp/createWhatsappUrl";
 import { siteConfig } from "@/content/site";
@@ -63,6 +63,9 @@ export function QuizShell({ sourceInterest }: { sourceInterest?: string }) {
     stored?.answers ?? { sourceInterest, sourcePage: "/quiz" },
   );
   const [stepIndex, setStepIndex] = useState(stored?.stepIndex ?? 0);
+  const [ageBracket, setAgeBracket] = useState<string | undefined>(
+    () => ageBrackets.find((b) => b.ageGroup === stored?.answers?.ageGroup)?.value,
+  );
   const [ageError, setAgeError] = useState<string | undefined>();
   const [contactErrors, setContactErrors] = useState<Partial<Record<keyof ContactStepValues, string>>>({});
   const [consentError, setConsentError] = useState<string | undefined>();
@@ -103,17 +106,18 @@ export function QuizShell({ sourceInterest }: { sourceInterest?: string }) {
   }
 
   function handleAgeSubmit() {
-    if (answers.age === undefined || Number.isNaN(answers.age)) {
-      setAgeError("Informe a idade para continuar.");
-      return;
-    }
-    if (answers.age < 0 || answers.age > 120) {
-      setAgeError("Informe um número entre 0 e 120.");
+    const bracket = ageBrackets.find((b) => b.value === ageBracket);
+    if (!bracket) {
+      setAgeError("Selecione uma faixa etária para continuar.");
       return;
     }
     setAgeError(undefined);
-    const { ageGroup, branch: resolvedBranch } = resolveBranch(answers.age);
-    setAnswers((prev) => ({ ...prev, ageGroup, branch: resolvedBranch }));
+    setAnswers((prev) => ({
+      ...prev,
+      age: bracket.representativeAge,
+      ageGroup: bracket.ageGroup,
+      branch: bracket.branch,
+    }));
     setStepIndex((i) => i + 1);
   }
 
@@ -231,11 +235,7 @@ export function QuizShell({ sourceInterest }: { sourceInterest?: string }) {
         <QuizProgress current={currentAnswerableIndex + 1} total={answerableSteps.length} />
 
         {currentStep.type === "age" ? (
-          <AgeQuestion
-            value={answers.age}
-            onChange={(age) => setAnswers((prev) => ({ ...prev, age }))}
-            error={ageError}
-          />
+          <AgeQuestion value={ageBracket} onChange={setAgeBracket} error={ageError} />
         ) : null}
 
         {currentStep.type === "question" ? (
@@ -378,6 +378,7 @@ function IntroStep({ onStart }: { onStart: () => void }) {
               src="/photos/quiz.png"
               alt="Pessoa respondendo à triagem pelo celular em um momento tranquilo"
               fill
+              priority
               sizes="(min-width: 1024px) 24rem, 80vw"
               className="object-cover"
             />

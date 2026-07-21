@@ -23,7 +23,7 @@ test("idoso: mudança repentina resulta em orientação para avaliação de saú
 
   await page.goto("/quiz");
   await page.getByRole("button", { name: "Começar triagem" }).click();
-  await page.getByLabel("Idade").fill("70");
+  await page.getByRole("radio", { name: "60 anos ou mais" }).click();
   await page.getByRole("button", { name: "Continuar" }).click();
 
   for (let i = 0; i < 8; i++) {

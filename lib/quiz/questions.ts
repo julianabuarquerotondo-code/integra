@@ -14,8 +14,51 @@ export interface QuestionDef {
 export const ageQuestion = {
   id: "age",
   question: "Qual é a idade da pessoa para quem você está buscando atendimento?",
-  helper: "Use um número inteiro, entre 0 e 120 anos.",
+  helper: "Escolha a faixa etária correspondente.",
 };
+
+export interface AgeBracket {
+  value: string;
+  label: string;
+  ageGroup: "under_four" | "child_teen" | "adult" | "elderly";
+  branch: "under_four" | "A" | "B" | "C";
+  representativeAge: number;
+}
+
+export const ageBrackets: AgeBracket[] = [
+  {
+    value: "under_4",
+    label: "Menos de 4 anos",
+    ageGroup: "under_four",
+    branch: "under_four",
+    representativeAge: 2,
+  },
+  {
+    value: "4_16",
+    label: "4 a 16 anos",
+    ageGroup: "child_teen",
+    branch: "A",
+    representativeAge: 10,
+  },
+  {
+    value: "17_59",
+    label: "17 a 59 anos",
+    ageGroup: "adult",
+    branch: "B",
+    representativeAge: 35,
+  },
+  {
+    value: "60_plus",
+    label: "60 anos ou mais",
+    ageGroup: "elderly",
+    branch: "C",
+    representativeAge: 70,
+  },
+];
+
+export function ageGroupLabel(ageGroup: AgeBracket["ageGroup"]): string {
+  return ageBrackets.find((b) => b.ageGroup === ageGroup)?.label ?? "";
+}
 
 export const branchAQuestions: QuestionDef[] = [
   {

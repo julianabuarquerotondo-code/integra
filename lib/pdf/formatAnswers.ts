@@ -1,6 +1,7 @@
 import type { QuizAnswers } from "@/lib/quiz/types";
 import {
   ageQuestion,
+  ageGroupLabel,
   branchAQuestions,
   branchBQuestions,
   branchCQuestions,
@@ -28,7 +29,7 @@ function formatAnswer(question: QuestionDef, raw: unknown): string | null {
  */
 export function formatAnswersForPdf(answers: QuizAnswers): QuizAnswerLabel[] {
   const labels: QuizAnswerLabel[] = [
-    { question: ageQuestion.question, answer: `${answers.age} anos` },
+    { question: ageQuestion.question, answer: ageGroupLabel(answers.ageGroup) },
   ];
 
   const branchQuestions =

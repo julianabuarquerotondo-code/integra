@@ -196,7 +196,7 @@ export async function POST(request: Request) {
         createdAt,
         respondentName: answers.respondentName!,
         phone: answers.phone!,
-        age: answers.age,
+        ageGroup: answers.ageGroup,
         resultKey: outcome.resultKey,
         bestContactTime: answers.bestContactTime ?? "qualquer",
         additionalNotes: answers.additionalNotes,

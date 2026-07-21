@@ -3,6 +3,7 @@ import { Document, Page, Text, View, Image, StyleSheet } from "@react-pdf/render
 import path from "node:path";
 import type { QuizAnswers, QuizResultKey, AgeGroup } from "@/lib/quiz/types";
 import { resultCopy } from "@/lib/quiz/result-copy";
+import { ageGroupLabel } from "@/lib/quiz/questions";
 import { formatDateTimeBR } from "@/lib/utils/date";
 
 const styles = StyleSheet.create({
@@ -134,8 +135,8 @@ export function QuizPdfDocument({
           </View>
         ) : null}
         <View style={styles.row}>
-          <Text style={styles.label}>Idade</Text>
-          <Text style={styles.value}>{answers.age} anos</Text>
+          <Text style={styles.label}>Faixa etária</Text>
+          <Text style={styles.value}>{ageGroupLabel(answers.ageGroup)}</Text>
         </View>
         <View style={styles.row}>
           <Text style={styles.label}>WhatsApp</Text>

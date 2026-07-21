@@ -23,7 +23,7 @@ test("adulto: interesse em Neurofeedback resulta no serviço correspondente", as
 
   await page.goto("/quiz");
   await page.getByRole("button", { name: "Começar triagem" }).click();
-  await page.getByLabel("Idade").fill("30");
+  await page.getByRole("radio", { name: "17 a 59 anos" }).click();
   await page.getByRole("button", { name: "Continuar" }).click();
 
   for (let i = 0; i < 7; i++) {
@@ -70,7 +70,7 @@ test("adulto: respostas variadas resultam em conversa inicial", async ({ page })
 
   await page.goto("/quiz");
   await page.getByRole("button", { name: "Começar triagem" }).click();
-  await page.getByLabel("Idade").fill("35");
+  await page.getByRole("radio", { name: "17 a 59 anos" }).click();
   await page.getByRole("button", { name: "Continuar" }).click();
 
   for (let i = 0; i < 7; i++) {

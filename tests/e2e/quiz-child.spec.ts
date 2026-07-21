@@ -24,7 +24,7 @@ test("criança/adolescente: fluxo completo até o resultado com código e WhatsA
   await page.goto("/quiz");
   await page.getByRole("button", { name: "Começar triagem" }).click();
 
-  await page.getByLabel("Idade").fill("8");
+  await page.getByRole("radio", { name: "4 a 16 anos" }).click();
   await page.getByRole("button", { name: "Continuar" }).click();
 
   // Percorre todas as perguntas do caminho A escolhendo a primeira opção disponível.
@@ -54,7 +54,7 @@ test("criança/adolescente: fluxo completo até o resultado com código e WhatsA
 test("menos de 4 anos: mostra orientação de contato direto sem enviar o questionário", async ({ page }) => {
   await page.goto("/quiz");
   await page.getByRole("button", { name: "Começar triagem" }).click();
-  await page.getByLabel("Idade").fill("2");
+  await page.getByRole("radio", { name: "Menos de 4 anos" }).click();
   await page.getByRole("button", { name: "Continuar" }).click();
 
   await expect(page.getByText("Vamos conversar diretamente sobre esse caso")).toBeVisible();
